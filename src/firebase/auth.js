@@ -6,6 +6,7 @@ import {
   signInWithPopup,
   signOut,
   FacebookAuthProvider,
+  GithubAuthProvider,
 } from "firebase/auth";
 import { auth } from "./config";
 
@@ -31,6 +32,14 @@ export async function loginGoogle() {
 
 export async function loginFacebook(){
   const provider = new FacebookAuthProvider();
+  const resultado = await signInWithPopup(auth,provider)
+
+  return resultado.user
+}
+
+
+export async function loginGithub(){
+  const provider = new GithubAuthProvider();
   const resultado = await signInWithPopup(auth,provider)
 
   return resultado.user
