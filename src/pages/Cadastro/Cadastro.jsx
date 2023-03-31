@@ -2,8 +2,9 @@ import { Button, Container, Form, InputGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logoIcon from "../../assets/icons/livros.png";
 import googleIcon from "../../assets/icons/google-white.svg";
+import githubIcon from "../../assets/icons/github.svg";
 import { useForm } from "react-hook-form";
-import { cadastrarEmailSenha, loginGoogle, loginFacebook } from "../../firebase/auth";
+import { cadastrarEmailSenha, loginGoogle, loginFacebook, loginGithub } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -74,6 +75,22 @@ export function Cadastro() {
     });
   }
 
+  function onLoginGithub(){
+    loginGithub().then((user)=>{
+      toast.success(`Bem-vindo(a) ${user.email}`, {
+        position: "bottom-right",
+        duration: 2500,
+      });
+      navigate("/");
+    })
+    .catch((erro) => {
+      toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+        position: "bottom-right",
+        duration: 2500,
+      });
+    });
+  }
+
   return (
     <Container fluid className="my-5">
       <p className="text-center">
@@ -91,6 +108,10 @@ export function Cadastro() {
       <Button className="m-3" variant="primary text-light" onClick={onLoginFacekook}>
         <img src={facebookIcon} width="32" alt="Facebook icon" /> Entrar com o
         Facebook
+      </Button>
+      <Button className="m-3" variant="dark text-light" onClick={onLoginGithub}>
+        <img src={githubIcon} width="32" alt="Facebook icon" /> Entrar com o
+        Github
       </Button>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="email">
