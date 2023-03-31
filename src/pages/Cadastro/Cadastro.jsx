@@ -1,4 +1,4 @@
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, InputGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logoIcon from "../../assets/icons/livros.png";
 import googleIcon from "../../assets/icons/google-white.svg";
@@ -6,8 +6,11 @@ import { useForm } from "react-hook-form";
 import { cadastrarEmailSenha, loginGoogle } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export function Cadastro() {
+  const [hidePass, setHidePass] = useState(true);
+
   const {
     register,
     handleSubmit,
@@ -82,15 +85,23 @@ export function Cadastro() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="password">
           <Form.Label>Senha</Form.Label>
-          <Form.Control
-            type="password"
-            className={errors.senha && "is-invalid"}
-            placeholder="Sua senha"
-            {...register("senha", { required: "A senha é obrigatória" })}
-          />
-          <Form.Text className="invalid-feedback">
-            {errors.senha?.message}
-          </Form.Text>
+          <InputGroup>
+            <Form.Control
+              type={hidePass ? "password" : "text"}
+              className={errors.senha && "is-invalid"}
+              placeholder="Sua senha"
+              {...register("senha", { required: "A senha é obrigatória" })}
+            />
+            <InputGroup.Text>
+              <i
+                class={hidePass ? "bi bi-eye-fill" : "bi bi-eye"}
+                onClick={() => setHidePass(!hidePass)}
+              ></i>
+            </InputGroup.Text>
+            <Form.Text className="invalid-feedback">
+              {errors.senha?.message}
+            </Form.Text>
+          </InputGroup>
         </Form.Group>
         <Button type="submit" variant="success">
           Cadastrar
