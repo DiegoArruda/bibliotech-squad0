@@ -31,14 +31,6 @@ export function Livros() {
         }
     }
 
-    const [info,setInfo] = useState();
-
-    function pegarInfo(titulo,categoria,autor,isbn){
-
-        console.log(titulo);
-    }
-
-
     return (
         <div className="livros">
             <Container>
