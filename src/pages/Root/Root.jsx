@@ -11,7 +11,7 @@ export function Root() {
   if (usuarioLogado === null) {
     // se está deslogado
     // redireciona para a página de login
-    return <Navigate to="/login" />;
+    return <Navigate to="/login" />
   }
 
   return (

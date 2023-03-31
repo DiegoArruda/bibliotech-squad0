@@ -8,6 +8,7 @@ import loginImg from "../../assets/images/login.png";
 import { AuthContext } from "../../contexts/AuthContext";
 import { loginGoogle, loginEmailSenha } from "../../firebase/auth";
 
+
 export function Login() {
   const {
     register,
