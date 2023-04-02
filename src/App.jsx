@@ -15,6 +15,8 @@ import { AdicionarEmprestimo } from "./pages/AdicionarEmprestimo/AdicionarEmpres
 import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
 
+
+
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
 
@@ -42,12 +44,14 @@ export function App() {
               <Route path="/livros/adicionar" element={<AdicionarLivro />} />
               <Route path="/livros/editar/:id" element={<EditarLivro />} />
               <Route path="/emprestimos" element={<Emprestimos />} />
-              <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
-              <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
+              <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />}/>
+              <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />}/>
             </Route>
+
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
           </Routes>
+        
         </BrowserRouter>
       </AuthContext.Provider>
       <Toaster />
