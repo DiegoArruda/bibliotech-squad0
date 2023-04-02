@@ -14,6 +14,8 @@ import { EditarLivro } from "./pages/EditarLivro/EditarLivro";
 import { AdicionarEmprestimo } from "./pages/AdicionarEmprestimo/AdicionarEmprestimo";
 import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
+import { Politicas } from "./pages/Politicas/politicas";
+
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -47,6 +49,9 @@ export function App() {
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
+            <Route path="/politicas" element={<Politicas/>} />
+
+          
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>
