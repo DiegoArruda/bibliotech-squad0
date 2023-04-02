@@ -15,9 +15,18 @@ import { AdicionarEmprestimo } from "./pages/AdicionarEmprestimo/AdicionarEmpres
 import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
 import { PaginaAjuda } from "./pages/PaginaAjuda/PaginaAjuda";
+import { DarkThemeContext } from "./contexts/DarkTheme";
+import useLocalStorage from "use-local-storage";
 
 export function App() {
-  const [usuarioLogado, setUsuarioLogado] = useState(null);
+  const [usuarioLogado, setUsuarioLogado] = useState();
+
+  const [darkTheme, setDarkTheme] = useLocalStorage("theme" ? "light" : "dark");
+
+  const switchTheme = () => {
+    const darkMode = darkTheme === "light" ? "dark" : "light";
+    setDarkTheme(darkMode);
+  };
 
   useEffect(() => {
     // Monitorar/detectar o usuário conectado
@@ -34,27 +43,39 @@ export function App() {
 
   return (
     <>
-      <AuthContext.Provider value={usuarioLogado}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Root />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/livros" element={<Livros />} />
-              <Route path="/livros/adicionar" element={<AdicionarLivro />} />
-              <Route path="/livros/editar/:id" element={<EditarLivro />} />
-              <Route path="/emprestimos" element={<Emprestimos />} />
-              <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
-              <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
-              <Route path="/ajuda" element={<PaginaAjuda />} />
-            </Route>
-            
-            <Route path="/login" element={<Login />} />
-            <Route path="/cadastro" element={<Cadastro />} />
+      <DarkThemeContext.Provider value={{ darkTheme, switchTheme }}>
+        <div className="app">
+          <AuthContext.Provider value={usuarioLogado}>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Root />}>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/livros" element={<Livros />} />
+                  <Route
+                    path="/livros/adicionar"
+                    element={<AdicionarLivro />}
+                  />
+                  <Route path="/livros/editar/:id" element={<EditarLivro />} />
+                  <Route path="/emprestimos" element={<Emprestimos />} />
+                  <Route
+                    path="/emprestimos/adicionar"
+                    element={<AdicionarEmprestimo />}
+                  />
+                  <Route
+                    path="/emprestimos/editar/:id"
+                    element={<EditarEmprestimo />}
+                  />
+                  <Route path="/ajuda" element={<PaginaAjuda />} />
+                </Route>
 
-          </Routes>
-        </BrowserRouter>
-      </AuthContext.Provider>
-      <Toaster />
+                <Route path="/login" element={<Login />} />
+                <Route path="/cadastro" element={<Cadastro />} />
+              </Routes>
+            </BrowserRouter>
+          </AuthContext.Provider>
+          <Toaster />
+        </div>
+      </DarkThemeContext.Provider>
     </>
   );
 }

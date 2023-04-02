@@ -3,9 +3,13 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import logoIcon from "./../../assets/icons/livros.png";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../firebase/auth";
+import { DarkThemeContext } from "../../contexts/DarkTheme";
+import { useContext } from "react";
 
 export function Menu() {
   const navigate = useNavigate();
+
+  const { darkTheme, switchTheme } = useContext(DarkThemeContext);
 
   function onLogout() {
     logout().then(() => {
@@ -35,6 +39,16 @@ export function Menu() {
             </Nav.Link>
             <Nav.Link as={Link} to="/ajuda">
               Ajuda
+            </Nav.Link>
+            <Nav.Link as={Link}>
+              <i
+                onClick={switchTheme}
+                class={
+                  darkTheme === "light"
+                    ? "bi bi-emoji-sunglasses"
+                    : "bi bi-moon-stars"
+                }
+              ></i>
             </Nav.Link>
             <Nav.Link onClick={onLogout}>
               <i className="bi bi-box-arrow-right"></i>
