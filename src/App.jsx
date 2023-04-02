@@ -16,7 +16,10 @@ import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
 import { PaginaAjuda } from "./pages/PaginaAjuda/PaginaAjuda";
 import { RecuperarSenha } from "./pages/RecuperarSenha/RecuperarSenha";
+import { Politicas } from "./pages/Politicas/politicas";
 import { Loader } from "./components/Loader/Loader";
+
+
 
 
 export function App() {
@@ -63,7 +66,7 @@ export function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/login/recuperar" element={<RecuperarSenha />} />
             <Route path="/cadastro" element={<Cadastro />} />
-
+            <Route path="/politicas" element={<Politicas/>} />
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>
