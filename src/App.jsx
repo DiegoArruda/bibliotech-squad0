@@ -15,17 +15,19 @@ import { AdicionarEmprestimo } from "./pages/AdicionarEmprestimo/AdicionarEmpres
 import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
 import { PaginaAjuda } from "./pages/PaginaAjuda/PaginaAjuda";
-import { DarkThemeContext } from "./contexts/DarkTheme";
+import { ThemeContext } from "./contexts/ThemeContext";
 import useLocalStorage from "use-local-storage";
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState();
 
-  const [darkTheme, setDarkTheme] = useLocalStorage("theme" ? "light" : "dark");
+  //useState com uso do LocalStorage para o Dark Theme
+  const [theme, setTheme] = useLocalStorage("theme" ? "light" : "dark");
 
+  //Função para a troca do tema
   const switchTheme = () => {
-    const darkMode = darkTheme === "light" ? "dark" : "light";
-    setDarkTheme(darkMode);
+    const darkMode = theme === "light" ? "dark" : "light";
+    setTheme(darkMode);
   };
 
   useEffect(() => {
@@ -43,7 +45,7 @@ export function App() {
 
   return (
     <>
-      <DarkThemeContext.Provider value={{ darkTheme, switchTheme }}>
+      <ThemeContext.Provider value={{ theme, switchTheme }}>
         <div className="app">
           <AuthContext.Provider value={usuarioLogado}>
             <BrowserRouter>
@@ -75,7 +77,7 @@ export function App() {
           </AuthContext.Provider>
           <Toaster />
         </div>
-      </DarkThemeContext.Provider>
+      </ThemeContext.Provider>
     </>
   );
 }

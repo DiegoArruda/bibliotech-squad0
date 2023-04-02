@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { DarkThemeContext } from "../../contexts/DarkTheme";
+import { DarkThemeContext } from "../../contexts/ThemeContext";
 import "./Home.css";
 export function Home() {
   const { darkTheme } = useContext(DarkThemeContext);

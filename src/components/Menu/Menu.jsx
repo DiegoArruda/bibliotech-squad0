@@ -3,13 +3,13 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import logoIcon from "./../../assets/icons/livros.png";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../firebase/auth";
-import { DarkThemeContext } from "../../contexts/DarkTheme";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import { useContext } from "react";
 
 export function Menu() {
   const navigate = useNavigate();
 
-  const { darkTheme, switchTheme } = useContext(DarkThemeContext);
+  const { theme, switchTheme } = useContext(ThemeContext);
 
   function onLogout() {
     logout().then(() => {
@@ -44,7 +44,7 @@ export function Menu() {
               <i
                 onClick={switchTheme}
                 class={
-                  darkTheme === "light"
+                  theme === "light"
                     ? "bi bi-emoji-sunglasses"
                     : "bi bi-moon-stars"
                 }
