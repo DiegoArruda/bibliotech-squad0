@@ -10,7 +10,7 @@ const firebaseConfig = {
   projectId: "bibliotech-aula-diego",
   storageBucket: "bibliotech-aula-diego.appspot.com",
   messagingSenderId: "1013908330223",
-  appId: "1:1013908330223:web:3b7f5834bb52348c2d6d1a"
+  appId: "1:1013908330223:web:3b7f5834bb52348c2d6d1a",
 };
 
 
@@ -22,3 +22,6 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 // Configura o Storage e seus recursos de Upload
 export const storage = getStorage(app);
+
+
+

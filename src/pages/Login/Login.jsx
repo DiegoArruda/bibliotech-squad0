@@ -1,14 +1,19 @@
-import { useContext } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { useContext, useState } from "react";
+import { Button, Container, Form, InputGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/icons/google-white.svg";
 import loginImg from "../../assets/images/login.png";
+import githubIcon from "../../assets/icons/github.svg";
 import { AuthContext } from "../../contexts/AuthContext";
-import { loginGoogle, loginEmailSenha } from "../../firebase/auth";
+import { loginGoogle, loginEmailSenha, loginFacebook, loginGithub } from "../../firebase/auth";
+import facebookIcon from "../../assets/icons/facebook-icon.svg"
+
 
 export function Login() {
+  const [hidePass, setHidePass] = useState(true);
+
   const {
     register,
     handleSubmit,
@@ -52,6 +57,38 @@ export function Login() {
       });
   }
 
+  function onLoginFacekook(){
+    loginFacebook().then((user)=>{
+      toast.success(`Bem-vindo(a) ${user.email}`, {
+        position: "bottom-right",
+        duration: 2500,
+      });
+      navigate("/");
+    })
+    .catch((erro) => {
+      toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+        position: "bottom-right",
+        duration: 2500,
+      });
+    });
+  }
+  
+  function onLoginGithub(){
+    loginGithub().then((user)=>{
+      toast.success(`Bem-vindo(a) ${user.email}`, {
+        position: "bottom-right",
+        duration: 2500,
+      });
+      navigate("/");
+    })
+    .catch((erro) => {
+      toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+        position: "bottom-right",
+        duration: 2500,
+      });
+    });
+  }
+
   const usuarioLogado = useContext(AuthContext);
 
   // Se tiver dados no objeto, está logado
@@ -69,9 +106,17 @@ export function Login() {
         Não tem conta? <Link to="/cadastro">Cadastre-se</Link>
       </p>
       <hr />
-      <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
+      <Button className="m-3 " variant="danger" onClick={onLoginGoogle}>
         <img src={googleIcon} width="32" alt="Google icon" /> Entrar com o
         Google
+      </Button>
+      <Button className="m-3" variant="primary text-light" onClick={onLoginFacekook}>
+        <img src={facebookIcon} width="32" alt="Facebook icon" /> Entrar com o
+        Facebook
+      </Button>
+      <Button className="m-3" variant="dark text-light" onClick={onLoginGithub}>
+        <img src={githubIcon} width="32" alt="Facebook icon" /> Entrar com o
+        Github
       </Button>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="email">
@@ -88,16 +133,28 @@ export function Login() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="senha">
           <Form.Label>Senha</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Sua senha"
-            className={errors.senha ? "is-invalid" : ""}
-            {...register("senha", { required: "Senha é obrigatória" })}
-          />
-          <Form.Text className="invalid-feedback">
-            {errors.senha?.message}
-          </Form.Text>
+          <InputGroup>
+            <Form.Control
+              type={hidePass ? "password" : "text"}
+              id="password"
+              placeholder={`Sua senha `}
+              className={errors.senha ? "is-invalid" : ""}
+              {...register("senha", { required: "Senha é obrigatória" })}
+            />
+            <InputGroup.Text>
+              <i
+                class={hidePass ? "bi bi-eye-fill" : "bi bi-eye"}
+                onClick={() => setHidePass(!hidePass)}
+              ></i>
+            </InputGroup.Text>
+            <Form.Text className="invalid-feedback">
+              {errors.senha?.message}
+            </Form.Text>
+          </InputGroup>
         </Form.Group>
+        <p className="text-muted">
+        <Link to="/login/recuperar">Esqueci minha senha</Link>
+        </p>
         <Button type="submit" variant="success">
           Entrar
         </Button>

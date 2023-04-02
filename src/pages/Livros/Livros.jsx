@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Button, Container, Table } from "react-bootstrap";
+import { Button, Container, Modal, Table} from "react-bootstrap";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
 import { deleteLivro, getLivros } from "../../firebase/livros";
 import "./Livros.css";
+import { ModalInfo } from "../../components/ModalInfo/ModalInfo";
 
 export function Livros() {
 
@@ -65,7 +66,7 @@ export function Livros() {
                                         <td>
                                             <img src={livro.urlCapa} alt={livro.titulo} />
                                         </td>
-                                        <td>
+                                        <td className="text-center">
                                             <Button
                                                 as={Link}
                                                 to={`/livros/editar/${livro.id}`}
@@ -75,11 +76,15 @@ export function Livros() {
                                             >
                                                 <i className="bi bi-pencil-fill"></i>
                                             </Button>
-                                            <Button size="sm" variant="danger" onClick={() => onDeleteLivro(livro.id, livro.titulo)}>
+                                            <Button size="sm" variant="danger" className="me-2" onClick={() => onDeleteLivro(livro.id, livro.titulo)}>
                                                 <i className="bi bi-trash3-fill"></i>
                                             </Button>
+                                            
+                                            <ModalInfo titulo = {livro.titulo} autor={livro.autor} categoria={livro.categoria} isbn={livro.isbn} />
+                                            
                                         </td>
                                     </tr>
+                                    
                                 )
                             })}
                         </tbody>
