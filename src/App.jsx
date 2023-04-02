@@ -17,15 +17,19 @@ import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
 import { PaginaAjuda } from "./pages/PaginaAjuda/PaginaAjuda";
 import { RecuperarSenha } from "./pages/RecuperarSenha/RecuperarSenha";
 import { Politicas } from "./pages/Politicas/politicas";
+import { Loader } from "./components/Loader/Loader";
+
 
 
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
+  const [ load, setLoad ] = useState(null);
 
   useEffect(() => {
     // Monitorar/detectar o usuário conectado
     // Fica sabendo quando loga/desloga
+    setTimeout(() => setLoad(true) , 2000)
     onAuthStateChanged(auth, (user) => {
       // user é nulo = deslogado
       // user tem objeto = logado
@@ -35,6 +39,13 @@ export function App() {
     // Esse efeito irá rodar apenas uma vez
     // Quando o App for renderizado/inicializado
   }, []);
+
+
+  if (load ===  null) {
+
+    return <Loader/>
+
+  } else  {
 
   return (
     <>
@@ -62,4 +73,5 @@ export function App() {
       <Toaster />
     </>
   );
+}
 }
