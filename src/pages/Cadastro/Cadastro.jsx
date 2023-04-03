@@ -100,7 +100,7 @@ export function Cadastro() {
 
   return (
     <>
-      <Container fluid className="my-5">
+      <Container fluid className="cadastro my-5">
         <p className="text-center">
           <img src={logoIcon} width="256" alt="Logo do app" />
         </p>
@@ -166,8 +166,8 @@ export function Cadastro() {
             Cadastrar
           </Button>
         </Form>
+        <Footer />
       </Container>
-      <Footer />
     </>
   );
 }
