@@ -1,14 +1,15 @@
-import { useContext } from "react";
-import { DarkThemeContext } from "../../contexts/ThemeContext";
-import "./Home.css";
+import { Container } from "react-bootstrap";
+
 export function Home() {
-  const { darkTheme } = useContext(DarkThemeContext);
+  // Context do dark theme
 
   return (
     <>
-      <DarkThemeContext.Provider id={darkTheme}>
-        <div class="home">HOME</div>
-      </DarkThemeContext.Provider>
+      <div className="d-flex-column justify-content-between align-items-center">
+        <Container>
+          <h1>HOME</h1>
+        </Container>
+      </div>
     </>
   );
 }

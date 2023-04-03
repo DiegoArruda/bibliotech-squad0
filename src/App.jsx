@@ -1,3 +1,4 @@
+import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Cadastro } from "./pages/Cadastro/Cadastro";
 import { Home } from "./pages/Home/Home";
@@ -26,8 +27,7 @@ export function App() {
 
   //Função para a troca do tema
   const switchTheme = () => {
-    const darkMode = theme === "light" ? "dark" : "light";
-    setTheme(darkMode);
+    setTheme(theme === "light" ? "dark" : "light");
   };
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export function App() {
   return (
     <>
       <ThemeContext.Provider value={{ theme, switchTheme }}>
-        <div className="app">
+        <div className="app" id={theme}>
           <AuthContext.Provider value={usuarioLogado}>
             <BrowserRouter>
               <Routes>

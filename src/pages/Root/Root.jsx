@@ -2,20 +2,11 @@ import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { Menu } from "../../components/Menu/Menu";
 import { AuthContext } from "../../contexts/AuthContext";
-/* import { DarkThemeContext } from "../../contexts/DarkTheme"; */
-/* import useLocalStorage from "use-local-storage"; */
 
 // Layout principal do App com Navbar Fixa
 // As páginas com Navbar fixa: home, livros, empréstimos, etc
 export function Root() {
   const usuarioLogado = useContext(AuthContext);
-
-  /*  const [darkTheme, setDarkTheme] = useLocalStorage("theme" ? "light" : "dark"); */
-
-  /*  const switchTheme = () => { */
-  /*    const darkMode = darkTheme === "light" ? "dark" : "light"; */
-  /*    setDarkTheme(darkMode); */
-  /*  }; */
 
   if (usuarioLogado === null) {
     // se está deslogado
@@ -25,12 +16,14 @@ export function Root() {
 
   return (
     <>
-      <header>
-        <Menu />
-      </header>
-      <main>
-        <Outlet />
-      </main>
+      <div>
+        <header>
+          <Menu />
+        </header>
+        <main>
+          <Outlet />
+        </main>
+      </div>
     </>
   );
 }
