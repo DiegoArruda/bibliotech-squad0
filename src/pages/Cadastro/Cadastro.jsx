@@ -156,7 +156,7 @@ export function Cadastro() {
         </Form.Group>
         <Button type="submit" variant="success">
           Cadastrar
-        </Button
+        </Button>
         </Form>
         <Footer />
       </Container>
