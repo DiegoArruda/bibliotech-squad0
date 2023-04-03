@@ -23,7 +23,6 @@ export function Root() {
     return (navigate("/"))     
   }
 
-
     return (
         <>
         <header>
@@ -35,3 +34,4 @@ export function Root() {
         </>
     );
     }
+

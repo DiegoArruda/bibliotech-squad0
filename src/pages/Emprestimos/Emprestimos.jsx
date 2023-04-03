@@ -8,6 +8,7 @@ import { db } from "../../firebase/config";
 
 export function Emprestimos() {
   const [emprestimos, setEmprestimos] = useState(null);
+
   const [ last, setLast] = useState(null);
   const [ first, setFirst] = useState(null);
   const [ contador, setContador] = useState(1);
@@ -86,9 +87,9 @@ export function Emprestimos() {
     <div className="emprestimos">
       <Container>
         <div className="d-flex justify-content-between align-items-center">
-          <h1>Emprestimos</h1>
+          <h1>Empréstimos</h1>
           <Button as={Link} to="/emprestimos/adicionar" variant="success">
-            Adicionar emprestimo
+            Adicionar empréstimo
           </Button>
         </div>
         <hr />

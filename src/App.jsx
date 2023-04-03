@@ -1,3 +1,4 @@
+import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Cadastro } from "./pages/Cadastro/Cadastro";
 import { Home } from "./pages/Home/Home";
@@ -18,6 +19,8 @@ import { PaginaAjuda } from "./pages/PaginaAjuda/PaginaAjuda";
 import { RecuperarSenha } from "./pages/RecuperarSenha/RecuperarSenha";
 import { Politicas } from "./pages/Politicas/politicas";
 import { Loader } from "./components/Loader/Loader";
+import { ThemeContext } from "./contexts/ThemeContext";
+import useLocalStorage from "use-local-storage";
 
 
 
@@ -27,6 +30,14 @@ import { Loader } from "./components/Loader/Loader";
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
   const [ load, setLoad ] = useState(null);
+  
+  //useState com uso do LocalStorage para o Dark Theme
+  const [theme, setTheme] = useLocalStorage("theme" ? "light" : "dark");
+  
+  //Função para a troca do tema
+  const switchTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
 
   useEffect(() => {
     // Monitorar/detectar o usuário conectado
@@ -51,6 +62,8 @@ export function App() {
 
   return (
     <>
+      <ThemeContext.Provider value={{ theme, switchTheme }}>
+        <div className="app" id={theme}>
       <AuthContext.Provider value={usuarioLogado}>
         <BrowserRouter>
           <Routes>
@@ -73,6 +86,8 @@ export function App() {
         </BrowserRouter>
       </AuthContext.Provider>
       <Toaster />
+      </div>
+     </ThemeContext.Provider>
     </>
   );
 }
