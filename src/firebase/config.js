@@ -14,6 +14,7 @@ const firebaseConfig = {
 
 };
 
+
 // Inicializa o app com base nas configurações acima
 export const app = initializeApp(firebaseConfig);
 // Configurando o Authentication e seus recursos login/cadastro

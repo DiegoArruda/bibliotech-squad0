@@ -16,15 +16,24 @@ import { AdicionarEmprestimo } from "./pages/AdicionarEmprestimo/AdicionarEmpres
 import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
 import { PaginaAjuda } from "./pages/PaginaAjuda/PaginaAjuda";
+import { RecuperarSenha } from "./pages/RecuperarSenha/RecuperarSenha";
+import { Politicas } from "./pages/Politicas/politicas";
+import { Loader } from "./components/Loader/Loader";
 import { ThemeContext } from "./contexts/ThemeContext";
 import useLocalStorage from "use-local-storage";
 
-export function App() {
-  const [usuarioLogado, setUsuarioLogado] = useState();
 
+
+
+
+
+export function App() {
+  const [usuarioLogado, setUsuarioLogado] = useState(null);
+  const [ load, setLoad ] = useState(null);
+  
   //useState com uso do LocalStorage para o Dark Theme
   const [theme, setTheme] = useLocalStorage("theme" ? "light" : "dark");
-
+  
   //Função para a troca do tema
   const switchTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
@@ -33,6 +42,7 @@ export function App() {
   useEffect(() => {
     // Monitorar/detectar o usuário conectado
     // Fica sabendo quando loga/desloga
+    setTimeout(() => setLoad(true) , 2000)
     onAuthStateChanged(auth, (user) => {
       // user é nulo = deslogado
       // user tem objeto = logado
@@ -43,41 +53,42 @@ export function App() {
     // Quando o App for renderizado/inicializado
   }, []);
 
+
+  if (load ===  null) {
+
+    return <Loader/>
+
+  } else  {
+
   return (
     <>
       <ThemeContext.Provider value={{ theme, switchTheme }}>
         <div className="app" id={theme}>
-          <AuthContext.Provider value={usuarioLogado}>
-            <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<Root />}>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/livros" element={<Livros />} />
-                  <Route
-                    path="/livros/adicionar"
-                    element={<AdicionarLivro />}
-                  />
-                  <Route path="/livros/editar/:id" element={<EditarLivro />} />
-                  <Route path="/emprestimos" element={<Emprestimos />} />
-                  <Route
-                    path="/emprestimos/adicionar"
-                    element={<AdicionarEmprestimo />}
-                  />
-                  <Route
-                    path="/emprestimos/editar/:id"
-                    element={<EditarEmprestimo />}
-                  />
-                  <Route path="/ajuda" element={<PaginaAjuda />} />
-                </Route>
-
-                <Route path="/login" element={<Login />} />
-                <Route path="/cadastro" element={<Cadastro />} />
-              </Routes>
-            </BrowserRouter>
-          </AuthContext.Provider>
-          <Toaster />
-        </div>
-      </ThemeContext.Provider>
+      <AuthContext.Provider value={usuarioLogado}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Root />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/livros" element={<Livros />} />
+              <Route path="/livros/adicionar" element={<AdicionarLivro />} />
+              <Route path="/livros/editar/:id" element={<EditarLivro />} />
+              <Route path="/emprestimos" element={<Emprestimos />} />
+              <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
+              <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
+              <Route path="/ajuda" element={<PaginaAjuda />} />
+            </Route>
+            <Route path="/login" element={<Login />} />
+            <Route path="/login/recuperar" element={<RecuperarSenha />} />
+            <Route path="/cadastro" element={<Cadastro />} />
+            <Route path="/politicas" element={<Politicas/>} />
+          </Routes>
+        
+        </BrowserRouter>
+      </AuthContext.Provider>
+      <Toaster />
+      </div>
+     </ThemeContext.Provider>
     </>
   );
+}
 }
