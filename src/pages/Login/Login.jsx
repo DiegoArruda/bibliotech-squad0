@@ -104,6 +104,7 @@ export function Login() {
   }
 
   return (
+    <>
     <Container fluid className="my-5">
       <p className="text-center">
         <img src={loginImg} width="256" alt="Logo" />
@@ -171,5 +172,7 @@ export function Login() {
         </Button>
       </Form>
     </Container>
+    <Footer/>
+    </>
   );
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Container, Modal, Table } from "react-bootstrap";
+import { Button, Container, Table } from "react-bootstrap";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
