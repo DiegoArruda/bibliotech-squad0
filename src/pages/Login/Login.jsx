@@ -7,14 +7,10 @@ import googleIcon from "../../assets/icons/google-white.svg";
 import loginImg from "../../assets/images/login.png";
 import githubIcon from "../../assets/icons/github.svg";
 import { AuthContext } from "../../contexts/AuthContext";
-import {
-  loginGoogle,
-  loginEmailSenha,
-  loginFacebook,
-  loginGithub,
-} from "../../firebase/auth";
-import facebookIcon from "../../assets/icons/facebook-icon.svg";
+import { loginGoogle, loginEmailSenha, loginFacebook, loginGithub } from "../../firebase/auth";
+import facebookIcon from "../../assets/icons/facebook-icon.svg"
 import { Footer } from "../../components/Footer/Footer";
+
 
 export function Login() {
   const [hidePass, setHidePass] = useState(true);
@@ -62,38 +58,36 @@ export function Login() {
       });
   }
 
-  function onLoginFacekook() {
-    loginFacebook()
-      .then((user) => {
-        toast.success(`Bem-vindo(a) ${user.email}`, {
-          position: "bottom-right",
-          duration: 2500,
-        });
-        navigate("/");
-      })
-      .catch((erro) => {
-        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
-          position: "bottom-right",
-          duration: 2500,
-        });
+  function onLoginFacekook(){
+    loginFacebook().then((user)=>{
+      toast.success(`Bem-vindo(a) ${user.email}`, {
+        position: "bottom-right",
+        duration: 2500,
       });
+      navigate("/");
+    })
+    .catch((erro) => {
+      toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+        position: "bottom-right",
+        duration: 2500,
+      });
+    });
   }
-
-  function onLoginGithub() {
-    loginGithub()
-      .then((user) => {
-        toast.success(`Bem-vindo(a) ${user.email}`, {
-          position: "bottom-right",
-          duration: 2500,
-        });
-        navigate("/");
-      })
-      .catch((erro) => {
-        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
-          position: "bottom-right",
-          duration: 2500,
-        });
+  
+  function onLoginGithub(){
+    loginGithub().then((user)=>{
+      toast.success(`Bem-vindo(a) ${user.email}`, {
+        position: "bottom-right",
+        duration: 2500,
       });
+      navigate("/");
+    })
+    .catch((erro) => {
+      toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+        position: "bottom-right",
+        duration: 2500,
+      });
+    });
   }
 
   const usuarioLogado = useContext(AuthContext);
@@ -104,8 +98,6 @@ export function Login() {
   }
 
   return (
-    <>
-
     <Container fluid className="my-5">
       <p className="text-center">
         <img src={loginImg} width="256" alt="Logo" />
@@ -144,13 +136,20 @@ export function Login() {
           <Form.Label>Senha</Form.Label>
           <InputGroup>
             <Form.Control
-              type="email"
-              placeholder="Seu email"
-              className={errors.email ? "is-invalid" : ""}
-              {...register("email", { required: "Email é obrigatório" })}
+              type={hidePass ? "password" : "text"}
+              id="password"
+              placeholder={`Sua senha `}
+              className={errors.senha ? "is-invalid" : ""}
+              {...register("senha", { required: "Senha é obrigatória" })}
             />
+            <InputGroup.Text>
+              <i
+                class={hidePass ? "bi bi-eye-fill" : "bi bi-eye"}
+                onClick={() => setHidePass(!hidePass)}
+              ></i>
+            </InputGroup.Text>
             <Form.Text className="invalid-feedback">
-              {errors.email?.message}
+              {errors.senha?.message}
             </Form.Text>
           </InputGroup>
         </Form.Group>
@@ -161,9 +160,7 @@ export function Login() {
           Entrar
         </Button>
       </Form>
+      <Footer/>
     </Container>
-    <Footer />
-        
-    </>
   );
 }
