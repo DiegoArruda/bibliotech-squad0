@@ -4,11 +4,16 @@ import logoIcon from "../../assets/icons/livros.png";
 import googleIcon from "../../assets/icons/google-white.svg";
 import githubIcon from "../../assets/icons/github.svg";
 import { useForm } from "react-hook-form";
-import { cadastrarEmailSenha, loginGoogle, loginFacebook, loginGithub } from "../../firebase/auth";
+import {
+  cadastrarEmailSenha,
+  loginGoogle,
+  loginFacebook,
+  loginGithub,
+} from "../../firebase/auth";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import facebookIcon from "../../assets/icons/facebook-icon.svg"
+import facebookIcon from "../../assets/icons/facebook-icon.svg";
 import { Footer } from "../../components/Footer/Footer";
 
 export function Cadastro() {
@@ -59,40 +64,41 @@ export function Cadastro() {
       });
   }
 
-  function onLoginFacekook(){
-    loginFacebook().then((user)=>{
-      toast.success(`Bem-vindo(a) ${user.email}`, {
-        position: "bottom-right",
-        duration: 2500,
+  function onLoginFacekook() {
+    loginFacebook()
+      .then((user) => {
+        toast.success(`Bem-vindo(a) ${user.email}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+        navigate("/");
+      })
+      .catch((erro) => {
+        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
       });
-      navigate("/");
-    })
-    .catch((erro) => {
-      toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
-        position: "bottom-right",
-        duration: 2500,
-      });
-    });
   }
 
-  function onLoginGithub(){
-    loginGithub().then((user)=>{
-      toast.success(`Bem-vindo(a) ${user.email}`, {
-        position: "bottom-right",
-        duration: 2500,
+  function onLoginGithub() {
+    loginGithub()
+      .then((user) => {
+        toast.success(`Bem-vindo(a) ${user.email}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+        navigate("/");
+      })
+      .catch((erro) => {
+        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
       });
-      navigate("/");
-    })
-    .catch((erro) => {
-      toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
-        position: "bottom-right",
-        duration: 2500,
-      });
-    });
   }
 
   return (
-
     <>
     <Container fluid className="my-5">
       <p className="text-center">
@@ -150,10 +156,10 @@ export function Cadastro() {
         </Form.Group>
         <Button type="submit" variant="success">
           Cadastrar
-        </Button>
+        </Button
         </Form>
+        <Footer />
       </Container>
-      <Footer />
     </>
   );
 }

@@ -23,6 +23,15 @@
   height: fit-content;
 }
 
+#dark .cadastro {
+  background-color: #1b1b1b;
+  height: fit-content;
+}
+
+#dark .login {
+  background-color: #1b1b1b;
+  height: fit-content;
+}
 #dark td {
   color: #fafafa;
 }
