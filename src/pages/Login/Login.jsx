@@ -10,6 +10,8 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { loginGoogle, loginEmailSenha, loginFacebook, loginGithub } from "../../firebase/auth";
 import facebookIcon from "../../assets/icons/facebook-icon.svg"
 import { Footer } from "../../components/Footer/Footer";
+import logoIcon from "../../assets/icons/livros.png";
+
 
 
 export function Login() {
@@ -118,6 +120,10 @@ export function Login() {
       <Button className="m-3" variant="dark text-light" onClick={onLoginGithub}>
         <img src={githubIcon} width="32" alt="Facebook icon" /> Entrar com o
         Github
+      </Button>
+      <Button className="m-3" variant="outline-success" as={Link} to="/quizz">
+        <img src={logoIcon}  width="32" alt="" />
+        Tente nosso Quiz
       </Button>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="email">
