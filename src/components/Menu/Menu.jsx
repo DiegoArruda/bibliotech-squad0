@@ -35,7 +35,7 @@ export function Menu() {
               Livros
             </Nav.Link>
             <Nav.Link as={Link} to="/emprestimos">
-              Emprestimos
+              Empréstimos
             </Nav.Link>
             <Nav.Link as={Link} to="/ajuda">
               Ajuda
