@@ -21,6 +21,7 @@ import { Politicas } from "./pages/Politicas/politicas";
 import { Loader } from "./components/Loader/Loader";
 import { ThemeContext } from "./contexts/ThemeContext";
 import useLocalStorage from "use-local-storage";
+import { Quizz } from "./pages/Quizz/Quizz";
 
 
 
@@ -81,6 +82,8 @@ export function App() {
             <Route path="/login/recuperar" element={<RecuperarSenha />} />
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/politicas" element={<Politicas/>} />
+            <Route path="/quizz" element={<Quizz/>} />
+
           </Routes>
         
         </BrowserRouter>
