@@ -14,15 +14,24 @@ import { EditarLivro } from "./pages/EditarLivro/EditarLivro";
 import { AdicionarEmprestimo } from "./pages/AdicionarEmprestimo/AdicionarEmprestimo";
 import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
+import { PaginaAjuda } from "./pages/PaginaAjuda/PaginaAjuda";
+import { RecuperarSenha } from "./pages/RecuperarSenha/RecuperarSenha";
+import { Politicas } from "./pages/Politicas/politicas";
+import { Loader } from "./components/Loader/Loader";
+
+
+
 
 
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
+  const [ load, setLoad ] = useState(null);
 
   useEffect(() => {
     // Monitorar/detectar o usuário conectado
     // Fica sabendo quando loga/desloga
+    setTimeout(() => setLoad(true) , 2000)
     onAuthStateChanged(auth, (user) => {
       // user é nulo = deslogado
       // user tem objeto = logado
@@ -32,6 +41,13 @@ export function App() {
     // Esse efeito irá rodar apenas uma vez
     // Quando o App for renderizado/inicializado
   }, []);
+
+
+  if (load ===  null) {
+
+    return <Loader/>
+
+  } else  {
 
   return (
     <>
@@ -44,12 +60,14 @@ export function App() {
               <Route path="/livros/adicionar" element={<AdicionarLivro />} />
               <Route path="/livros/editar/:id" element={<EditarLivro />} />
               <Route path="/emprestimos" element={<Emprestimos />} />
-              <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />}/>
-              <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />}/>
+              <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
+              <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
+              <Route path="/ajuda" element={<PaginaAjuda />} />
             </Route>
-
             <Route path="/login" element={<Login />} />
+            <Route path="/login/recuperar" element={<RecuperarSenha />} />
             <Route path="/cadastro" element={<Cadastro />} />
+            <Route path="/politicas" element={<Politicas/>} />
           </Routes>
         
         </BrowserRouter>
@@ -57,4 +75,5 @@ export function App() {
       <Toaster />
     </>
   );
+}
 }
