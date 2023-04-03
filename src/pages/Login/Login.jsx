@@ -9,6 +9,7 @@ import githubIcon from "../../assets/icons/github.svg";
 import { AuthContext } from "../../contexts/AuthContext";
 import { loginGoogle, loginEmailSenha, loginFacebook, loginGithub } from "../../firebase/auth";
 import facebookIcon from "../../assets/icons/facebook-icon.svg"
+import { Footer } from "../../components/Footer/Footer";
 
 
 export function Login() {
@@ -159,6 +160,7 @@ export function Login() {
           Entrar
         </Button>
       </Form>
+      <Footer/>
     </Container>
   );
 }

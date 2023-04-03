@@ -154,8 +154,9 @@ export function Cadastro() {
           Cadastrar
         </Button>
         </Form>
+        <Footer />
       </Container>
-      <Footer />
+      
     </>
   );
 }
