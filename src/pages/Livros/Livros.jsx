@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 import { Button, Container, Modal, Table } from "react-bootstrap";
 import { toast } from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
 import { deleteLivro, getLivros } from "../../firebase/livros";
 import "./Livros.css";
 import { ModalInfo } from "../../components/ModalInfo/ModalInfo";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../../firebase/config";
 
 export function Livros() {
+
+  const {id} = useParams();
+
   const [livros, setLivros] = useState(null);
 
   useEffect(() => {
@@ -15,9 +20,15 @@ export function Livros() {
   }, []);
 
   function initializeTable() {
-    getLivros().then((resultados) => {
-      setLivros(resultados);
-    });
+    const livrosRef = collection(db, "livros");
+    const q = query(livrosRef, where("active", "==", true));
+    getDocs(q).then((snapshot) => {
+      let paginaAtual = []
+      snapshot.forEach((doc) => {
+        paginaAtual.push({...doc.data(), id: doc.id})
+      })
+      setLivros(paginaAtual);
+    })
   }
 
   function onDeleteLivro(id, titulo) {
@@ -25,7 +36,8 @@ export function Livros() {
       `Tem certeza que deseja excluir o livro ${titulo}?`
     );
     if (deletar) {
-      deleteLivro(id).then(() => {
+      let data = false
+      deleteLivro(id, data).then(() => {
         toast.success(`${titulo} apagado com sucesso!`, {
           duration: 2000,
           position: "bottom-right",

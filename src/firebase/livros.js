@@ -11,7 +11,7 @@ import { livrosCollection } from "./collections";
 import { storage } from "./config"
 
 export async function addLivro(data) {
-    await addDoc(livrosCollection, data);
+    await addDoc(livrosCollection, data, data.active = true);
 }
 
 export async function getLivros() {
@@ -32,8 +32,8 @@ export async function updateLivro(id, data) {
     await updateDoc(doc(livrosCollection, id), data);
 }
 
-export async function deleteLivro(id) {
-    await deleteDoc(doc(livrosCollection, id));
+export async function deleteLivro(id, data) {
+    await updateDoc(doc(livrosCollection, id), {active: data});
 }
 
 export async function uploadCapaLivro(imagem) {
