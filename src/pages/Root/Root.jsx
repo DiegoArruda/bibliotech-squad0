@@ -4,10 +4,12 @@ import { Menu } from "../../components/Menu/Menu";
 import { AuthContext } from "../../contexts/AuthContext";
 import { Loader } from "../../components/Loader/Loader";
 
+
 // Layout principal do App com Navbar Fixa
 // As páginas com Navbar fixa: home, livros, empréstimos, etc
 export function Root() {
-  const usuarioLogado = useContext(AuthContext);
+    const usuarioLogado = useContext(AuthContext);
+
 
   const navigate = useNavigate();
 
@@ -21,14 +23,15 @@ export function Root() {
     return (navigate("/"))     
   }
 
-  return (
-    <>
-      <header>
-        <Menu />
-      </header>
-      <main>
-        <Outlet />
-      </main>
-    </>
-  );
-}
+
+    return (
+        <>
+        <header>
+            <Menu />
+        </header>
+        <main>
+            <Outlet />
+        </main>
+        </>
+    );
+    }

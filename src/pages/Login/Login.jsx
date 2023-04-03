@@ -7,8 +7,10 @@ import googleIcon from "../../assets/icons/google-white.svg";
 import loginImg from "../../assets/images/login.png";
 import githubIcon from "../../assets/icons/github.svg";
 import { AuthContext } from "../../contexts/AuthContext";
+import { loginGoogle, loginEmailSenha } from "../../firebase/auth";
 import { loginGoogle, loginEmailSenha, loginFacebook, loginGithub } from "../../firebase/auth";
 import facebookIcon from "../../assets/icons/facebook-icon.svg"
+import { Footer } from "../../components/Footer/Footer";
 
 
 export function Login() {
@@ -20,42 +22,42 @@ export function Login() {
     formState: { errors },
   } = useForm();
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  function onSubmit(data) {
-    const { email, senha } = data;
-    loginEmailSenha(email, senha)
-      .then((user) => {
-        toast.success(`Entrando como ${user.email}`, {
-          position: "bottom-right",
-          duration: 2500,
+    function onSubmit(data) {
+        const { email, senha } = data;
+        loginEmailSenha(email, senha)
+        .then((user) => {
+            toast.success(`Entrando como ${user.email}`, {
+            position: "bottom-right",
+            duration: 2500,
+            });
+            navigate("/");
+        })
+        .catch((erro) => {
+            toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+            position: "bottom-right",
+            duration: 2500,
+            });
         });
-        navigate("/");
-      })
-      .catch((erro) => {
-        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
-          position: "bottom-right",
-          duration: 2500,
-        });
-      });
-  }
+    }
 
-  function onLoginGoogle() {
-    loginGoogle()
-      .then((user) => {
-        toast.success(`Bem-vindo(a) ${user.email}`, {
-          position: "bottom-right",
-          duration: 2500,
+    function onLoginGoogle() {
+        loginGoogle()
+        .then((user) => {
+            toast.success(`Bem-vindo(a) ${user.email}`, {
+            position: "bottom-right",
+            duration: 2500,
+            });
+            navigate("/");
+        })
+        .catch((erro) => {
+            toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+            position: "bottom-right",
+            duration: 2500,
+            });
         });
-        navigate("/");
-      })
-      .catch((erro) => {
-        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
-          position: "bottom-right",
-          duration: 2500,
-        });
-      });
-  }
+    }
 
   function onLoginFacekook(){
     loginFacebook().then((user)=>{
@@ -91,10 +93,11 @@ export function Login() {
 
   const usuarioLogado = useContext(AuthContext);
 
-  // Se tiver dados no objeto, está logado
-  if (usuarioLogado !== null) {
-    return <Navigate to="/" />;
-  }
+    // Se tiver dados no objeto, está logado
+    if (usuarioLogado !== null) {
+        return <Navigate to="/" />;
+    }
+
 
   return (
     <Container fluid className="my-5">

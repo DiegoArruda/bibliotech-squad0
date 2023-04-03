@@ -22,6 +22,8 @@ import { Loader } from "./components/Loader/Loader";
 
 
 
+
+
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
   const [ load, setLoad ] = useState(null);
@@ -62,12 +64,12 @@ export function App() {
               <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
               <Route path="/ajuda" element={<PaginaAjuda />} />
             </Route>
-            
             <Route path="/login" element={<Login />} />
             <Route path="/login/recuperar" element={<RecuperarSenha />} />
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/politicas" element={<Politicas/>} />
           </Routes>
+        
         </BrowserRouter>
       </AuthContext.Provider>
       <Toaster />
