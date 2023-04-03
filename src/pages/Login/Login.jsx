@@ -7,7 +7,6 @@ import googleIcon from "../../assets/icons/google-white.svg";
 import loginImg from "../../assets/images/login.png";
 import githubIcon from "../../assets/icons/github.svg";
 import { AuthContext } from "../../contexts/AuthContext";
-import { loginGoogle, loginEmailSenha } from "../../firebase/auth";
 import { loginGoogle, loginEmailSenha, loginFacebook, loginGithub } from "../../firebase/auth";
 import facebookIcon from "../../assets/icons/facebook-icon.svg"
 import { Footer } from "../../components/Footer/Footer";
@@ -100,6 +99,7 @@ export function Login() {
 
 
   return (
+    <>
     <Container fluid className="my-5">
       <p className="text-center">
         <img src={loginImg} width="256" alt="Logo" />
@@ -163,5 +163,7 @@ export function Login() {
         </Button>
       </Form>
     </Container>
+    <Footer />
+    </>
   );
 }
