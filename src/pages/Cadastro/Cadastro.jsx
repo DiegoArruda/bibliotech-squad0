@@ -100,71 +100,63 @@ export function Cadastro() {
 
   return (
     <>
-      <Container fluid className="cadastro my-5">
-        <p className="text-center">
-          <img src={logoIcon} width="256" alt="Logo do app" />
-        </p>
-        <h4>Faça parte da nossa plataforma</h4>
-        <p className="text-muted">
-          Já tem conta? <Link to="/login">Entre</Link>
-        </p>
-        <hr />
-        <Button className="m-3" variant="danger" onClick={onLoginGoogle}>
-          <img src={googleIcon} width="32" alt="Logo do google" />
-          Entrar com o Google
-        </Button>
-        <Button
-          className="m-3"
-          variant="primary text-light"
-          onClick={onLoginFacekook}
-        >
-          <img src={facebookIcon} width="32" alt="Facebook icon" /> Entrar com o
-          Facebook
-        </Button>
-        <Button
-          className="m-3"
-          variant="dark text-light"
-          onClick={onLoginGithub}
-        >
-          <img src={githubIcon} width="32" alt="Facebook icon" /> Entrar com o
-          Github
-        </Button>
-        <Form onSubmit={handleSubmit(onSubmit)}>
-          <Form.Group className="mb-3" controlId="email">
-            <Form.Label>Email</Form.Label>
+    <Container fluid className="my-5">
+      <p className="text-center">
+        <img src={logoIcon} width="256" alt="Logo do app" />
+      </p>
+      <h4>Faça parte da nossa plataforma</h4>
+      <p className="text-muted">
+        Já tem conta? <Link to="/login">Entre</Link>
+      </p>
+      <hr />
+      <Button className="m-3" variant="danger" onClick={onLoginGoogle}>
+        <img src={googleIcon} width="32" alt="Logo do google" />
+        Entrar com o Google
+      </Button>
+      <Button className="m-3" variant="primary text-light" onClick={onLoginFacekook}>
+        <img src={facebookIcon} width="32" alt="Facebook icon" /> Entrar com o
+        Facebook
+      </Button>
+      <Button className="m-3" variant="dark text-light" onClick={onLoginGithub}>
+        <img src={githubIcon} width="32" alt="Facebook icon" /> Entrar com o
+        Github
+      </Button>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form.Group className="mb-3" controlId="email">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            type="email"
+            className={errors.email && "is-invalid"}
+            placeholder="Seu email"
+            {...register("email", { required: "O email é obrigatório" })}
+          />
+          <Form.Text className="invalid-feedback">
+            {errors.email?.message}
+          </Form.Text>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="password">
+          <Form.Label>Senha</Form.Label>
+          <InputGroup>
             <Form.Control
-              type="email"
-              className={errors.email && "is-invalid"}
-              placeholder="Seu email"
-              {...register("email", { required: "O email é obrigatório" })}
+              type={hidePass ? "password" : "text"}
+              className={errors.senha && "is-invalid"}
+              placeholder="Sua senha"
+              {...register("senha", { required: "A senha é obrigatória" })}
             />
+            <InputGroup.Text>
+              <i
+                class={hidePass ? "bi bi-eye-fill" : "bi bi-eye"}
+                onClick={() => setHidePass(!hidePass)}
+              ></i>
+            </InputGroup.Text>
             <Form.Text className="invalid-feedback">
-              {errors.email?.message}
+              {errors.senha?.message}
             </Form.Text>
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="password">
-            <Form.Label>Senha</Form.Label>
-            <InputGroup>
-              <Form.Control
-                type={hidePass ? "password" : "text"}
-                className={errors.senha && "is-invalid"}
-                placeholder="Sua senha"
-                {...register("senha", { required: "A senha é obrigatória" })}
-              />
-              <InputGroup.Text>
-                <i
-                  class={hidePass ? "bi bi-eye-fill" : "bi bi-eye"}
-                  onClick={() => setHidePass(!hidePass)}
-                ></i>
-              </InputGroup.Text>
-              <Form.Text className="invalid-feedback">
-                {errors.senha?.message}
-              </Form.Text>
-            </InputGroup>
-          </Form.Group>
-          <Button type="submit" variant="success">
-            Cadastrar
-          </Button>
+          </InputGroup>
+        </Form.Group>
+        <Button type="submit" variant="success">
+          Cadastrar
+        </Button
         </Form>
         <Footer />
       </Container>
