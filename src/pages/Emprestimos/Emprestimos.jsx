@@ -3,86 +3,99 @@ import { Badge, Button, Container, Pagination, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import { Loader } from "../../components/Loader/Loader";
-import { collection, endBefore, getDocs, limit, limitToLast, orderBy, query, startAfter } from "firebase/firestore";
+import {
+  collection,
+  endBefore,
+  getDocs,
+  limit,
+  limitToLast,
+  orderBy,
+  query,
+  startAfter,
+} from "firebase/firestore";
 import { db } from "../../firebase/config";
 
 export function Emprestimos() {
   const [emprestimos, setEmprestimos] = useState(null);
 
-  const [ last, setLast] = useState(null);
-  const [ first, setFirst] = useState(null);
-  const [ contador, setContador] = useState(1);
-
-
+  const [last, setLast] = useState(null);
+  const [first, setFirst] = useState(null);
+  const [contador, setContador] = useState(1);
 
   useEffect(() => {
     // getEmprestimos().then((busca) => {
     //   setEmprestimos(busca);
     // });
-    const atual = query(collection(db, "emprestimos"),orderBy("leitor"), limit(3));
-     getDocs(atual).then((snapshot) => {
-        let paginaAtual = [];
-        const lastVisible = snapshot.docs[snapshot.docs.length-1]
-        setLast(lastVisible);
-        const first = snapshot.docs[0]
-        setFirst(first);
-        snapshot.forEach((doc) => {
-            paginaAtual.push({...doc.data(), id: doc.id})
-        })
-        setEmprestimos(paginaAtual)
-        
-     })
+    const atual = query(
+      collection(db, "emprestimos"),
+      orderBy("leitor"),
+      limit(3)
+    );
+    getDocs(atual).then((snapshot) => {
+      let paginaAtual = [];
+      const lastVisible = snapshot.docs[snapshot.docs.length - 1];
+      setLast(lastVisible);
+      const first = snapshot.docs[0];
+      setFirst(first);
+      snapshot.forEach((doc) => {
+        paginaAtual.push({ ...doc.data(), id: doc.id });
+      });
+      setEmprestimos(paginaAtual);
+    });
   }, []);
 
   function proximaPagina() {
-
-
-    const nextPage = query(collection(db, "emprestimos"),orderBy("leitor"),startAfter(last),limit(3));
+    const nextPage = query(
+      collection(db, "emprestimos"),
+      orderBy("leitor"),
+      startAfter(last),
+      limit(3)
+    );
     getDocs(nextPage).then((snapshot) => {
-        if (!snapshot.empty){
-            let calculo = contador + 1;
-            setContador(calculo);
-        let paginaAtual = []
-        const lastVisible = snapshot.docs[snapshot.docs.length-1]
+      if (!snapshot.empty) {
+        let calculo = contador + 1;
+        setContador(calculo);
+        let paginaAtual = [];
+        const lastVisible = snapshot.docs[snapshot.docs.length - 1];
         setLast(lastVisible);
-        const first = snapshot.docs[0]
+        const first = snapshot.docs[0];
         setFirst(first);
         snapshot.forEach((doc) => {
-            paginaAtual.push({...doc.data(), id: doc.id});
-        })
+          paginaAtual.push({ ...doc.data(), id: doc.id });
+        });
         setEmprestimos(paginaAtual);
-    }
-    })    
-
-
-
-    
+      }
+    });
   }
 
   function voltarPagina() {
-
-
-    const prevPage = query(collection(db, "emprestimos"),orderBy("leitor"), endBefore(first),limitToLast(3));
+    const prevPage = query(
+      collection(db, "emprestimos"),
+      orderBy("leitor"),
+      endBefore(first),
+      limitToLast(3)
+    );
     getDocs(prevPage).then((snapshot) => {
-        if (!snapshot.empty){
-            let calculo = contador - 1;
-            setContador(calculo);
-        
-        let paginaAtual = []
-        const lastVisible = snapshot.docs[snapshot.docs.length-1]
+      if (!snapshot.empty) {
+        let calculo = contador - 1;
+        setContador(calculo);
+
+        let paginaAtual = [];
+        const lastVisible = snapshot.docs[snapshot.docs.length - 1];
         setLast(lastVisible);
-        const first = snapshot.docs[0]
+        const first = snapshot.docs[0];
         setFirst(first);
         snapshot.forEach((doc) => {
-            paginaAtual.push({...doc.data(), id: doc.id})
-        })
-        setEmprestimos(paginaAtual); 
-    }
-    })
-
-
+          paginaAtual.push({ ...doc.data(), id: doc.id });
+        });
+        setEmprestimos(paginaAtual);
+      }
+    });
   }
 
+  //Utilização do dayjs
+  //Instalação: npm install dayjs
+  const dayjs = require("dayjs");
   return (
     <div className="emprestimos">
       <Container>
@@ -113,6 +126,7 @@ export function Emprestimos() {
                 const dataEmprestimo = emprestimo.dataEmprestimo
                   .toDate()
                   .toLocaleDateString("pt-br");
+                const dataDevolucao = dayjs(emprestimo.dataDevolucao);
                 return (
                   <tr key={emprestimo.id}>
                     <td>{emprestimo.leitor}</td>
@@ -131,6 +145,7 @@ export function Emprestimos() {
                       </Badge>
                     </td>
                     <td>{dataEmprestimo}</td>
+                    <td>{dataDevolucao.format("DD/MM/YYYY")}</td>
                     <td>
                       <Button
                         as={Link}
@@ -148,15 +163,15 @@ export function Emprestimos() {
           </Table>
         )}
         <Pagination className="d-flex justify-content-center">
-            <Button variant="none" onClick={voltarPagina}>
-                <Pagination.Prev />
-            </Button>
-            <Button variant="none">
-                <Pagination.Item active>{contador}</Pagination.Item>
-                </Button>
-        <Button variant="none" onClick={proximaPagina}>
-          <Pagination.Next />
-        </Button>
+          <Button variant="none" onClick={voltarPagina}>
+            <Pagination.Prev />
+          </Button>
+          <Button variant="none">
+            <Pagination.Item active>{contador}</Pagination.Item>
+          </Button>
+          <Button variant="none" onClick={proximaPagina}>
+            <Pagination.Next />
+          </Button>
         </Pagination>
       </Container>
     </div>
