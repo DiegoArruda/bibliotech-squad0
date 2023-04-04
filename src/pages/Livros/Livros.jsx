@@ -28,7 +28,7 @@ export function Livros() {
       let indice = nomeLivroMinusculo.indexOf(valorMinusculo);
       let isbn = livro.isbn
       let indice2 = isbn.indexOf(valor)
-      if(indice != -1 || indice2 != -1) {
+      if(indice !== -1 || indice2 !== -1) {
         Liv.push(livro)
       }
       setPesquisa(Liv)
