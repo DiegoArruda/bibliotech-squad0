@@ -26,7 +26,9 @@ export function Livros() {
       let nomeLivroMinusculo = livro.titulo.toLowerCase();
       let valorMinusculo = valor.toLowerCase();
       let indice = nomeLivroMinusculo.indexOf(valorMinusculo);
-      if(indice != -1) {
+      let isbn = livro.isbn
+      let indice2 = isbn.indexOf(valor)
+      if(indice != -1 || indice2 != -1) {
         Liv.push(livro)
       }
       setPesquisa(Liv)
