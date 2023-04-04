@@ -17,6 +17,7 @@ import { db } from "../../firebase/config";
 
 export function Emprestimos() {
   const [emprestimos, setEmprestimos] = useState(null);
+  
 
   const [last, setLast] = useState(null);
   const [first, setFirst] = useState(null);

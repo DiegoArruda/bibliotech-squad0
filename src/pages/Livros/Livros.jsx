@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Container, Table } from "react-bootstrap";
+import { Button, Container, Form, Table } from "react-bootstrap";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
@@ -10,11 +10,29 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../firebase/config";
 
 export function Livros() {
+  const [pesquisa, setPesquisa] = useState([]);
+  
   const [livros, setLivros] = useState(null);
 
   useEffect(() => {
     initializeTable();
   }, []);
+
+
+    function onPesquisa(event){
+      let valor = event.target.value
+    let Liv = [];
+    for(let livro of livros) {
+      let nomeLivroMinusculo = livro.titulo.toLowerCase();
+      let valorMinusculo = valor.toLowerCase();
+      let indice = nomeLivroMinusculo.indexOf(valorMinusculo);
+      let isbn = livro.isbn
+      let indice2 = isbn.indexOf(valor)
+      if(indice != -1 || indice2 != -1) {
+        Liv.push(livro)
+      }
+      setPesquisa(Liv)
+    }}
 
   function initializeTable() {
     const livrosRef = collection(db, "livros");
@@ -25,6 +43,7 @@ export function Livros() {
         paginaAtual.push({ ...doc.data(), id: doc.id });
       });
       setLivros(paginaAtual);
+      setPesquisa(paginaAtual);
     });
   }
 
@@ -49,6 +68,16 @@ export function Livros() {
       <Container>
         <div className="d-flex justify-content-between align-items-center">
           <h1>Livros</h1>
+          <Form>
+            <Form.Group className="mt-2">
+              <Form.Control
+                onChange={onPesquisa}
+                type="text"
+                placeholder="Pesquise livro ou ISBN..."
+              />
+              <Form.Text className="text-danger"></Form.Text>
+            </Form.Group>
+          </Form>
           <Button as={Link} to="/livros/adicionar" variant="success">
             Adicionar Livro
           </Button>
@@ -69,7 +98,7 @@ export function Livros() {
               </tr>
             </thead>
             <tbody>
-              {livros.map((livro) => {
+              {pesquisa.map((livro) => {
                 return (
                   <tr key={livro.id}>
                     <td>{livro.titulo}</td>
@@ -97,7 +126,6 @@ export function Livros() {
                       >
                         <i className="bi bi-trash3-fill"></i>
                       </Button>
-
                       <ModalInfo
                         titulo={livro.titulo}
                         autor={livro.autor}
