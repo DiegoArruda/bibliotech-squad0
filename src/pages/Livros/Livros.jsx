@@ -3,7 +3,7 @@ import { Button, Container, Form, Table } from "react-bootstrap";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
-import { deleteLivro, getLivros } from "../../firebase/livros";
+import { deleteLivro } from "../../firebase/livros";
 import "./Livros.css";
 import { ModalInfo } from "../../components/ModalInfo/ModalInfo";
 import { collection, getDocs, query, where } from "firebase/firestore";
@@ -11,7 +11,7 @@ import { db } from "../../firebase/config";
 
 export function Livros() {
   const [pesquisa, setPesquisa] = useState([]);
-
+  
   const [livros, setLivros] = useState(null);
 
   useEffect(() => {
