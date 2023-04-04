@@ -22,7 +22,7 @@ export function AdicionarEmprestimo() {
       delete data.idLivro;
       let novoEmprestimo = {
         ...data,
-        status: "",
+        status: "Pendente",
         livro,
         dataEmprestimo: new Date(),
       };

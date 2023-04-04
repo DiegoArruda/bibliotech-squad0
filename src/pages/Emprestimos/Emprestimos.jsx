@@ -92,6 +92,20 @@ export function Emprestimos() {
       }
     });
   }
+  //função para definir status do emprestimo
+  function bookLoanStatus(emprestimo) {
+    const today = dayjs();
+    const dataDevolucao = dayjs(emprestimo.dataDevolucao);
+    const diff = dataDevolucao.diff(today, dataDevolucao);
+
+    if (diff >= 0) {
+      emprestimo.status = "Pendente";
+      return <Badge bg="warning">{emprestimo.status}</Badge>;
+    } else if (diff < 0) {
+      emprestimo.status = "Atrasado";
+      return <Badge bg="danger">{emprestimo.status}</Badge>;
+    }
+  }
 
   //Utilização do dayjs
   //Instalação: npm install dayjs
@@ -118,6 +132,7 @@ export function Emprestimos() {
                 <th>Livro</th>
                 <th>Status</th>
                 <th>Data de Empréstimo</th>
+                <th>Data de Devolução</th>
                 <th>Ações</th>
               </tr>
             </thead>
@@ -133,17 +148,7 @@ export function Emprestimos() {
                     <td>{emprestimo.email}</td>
                     <td>{emprestimo.telefone}</td>
                     <td>{emprestimo.livro.titulo}</td>
-                    <td>
-                      <Badge
-                        bg={
-                          emprestimo.status === "Pendente"
-                            ? "warning"
-                            : "success"
-                        }
-                      >
-                        {emprestimo.status}
-                      </Badge>
-                    </td>
+                    <td>{bookLoanStatus(emprestimo)}</td>
                     <td>{dataEmprestimo}</td>
                     <td>{dataDevolucao.format("DD/MM/YYYY")}</td>
                     <td>
