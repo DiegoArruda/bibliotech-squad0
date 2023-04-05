@@ -1,0 +1,18 @@
+.card-login{
+    width: 50%;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body{
+    background-color: aqua;
+}
+
+.botao-icone{
+    margin: 10px;
+    padding: 0px;
+    border-radius: 150px;
+}
