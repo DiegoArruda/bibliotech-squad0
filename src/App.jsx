@@ -23,6 +23,8 @@ import { ThemeContext } from "./contexts/ThemeContext";
 import useLocalStorage from "use-local-storage";
 import { Quizz } from "./pages/Quizz/Quizz";
 import { Loja } from "./pages/Loja/Loja";
+import { NotFound } from "./pages/NotFound/NotFound";
+
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -79,6 +81,8 @@ export function App() {
             <Route path="/politicas" element={<Politicas/>} />
             <Route path="/quizz" element={<Quizz/>} />
             <Route path="/loja" element={<Loja/>} />
+            <Route path="/notfound" element={<NotFound />} />
+            <Route path="*" element={<NotFound />} />
 
 
           </Routes>
@@ -91,3 +95,4 @@ export function App() {
     </>
   );
 }
+
