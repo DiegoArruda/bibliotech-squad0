@@ -16,7 +16,43 @@
   color: #fafafa;
 }
 
+#dark .card-body {
+  background-color: #1b1b1b;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  border: 2px solid green;
+}
+
 #dark .livros {
+  background-color: #1b1b1b;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+
+#dark .ajuda {
+  background-color: #1b1b1b;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+
+#dark .ajuda .accordion-header {
+  background-color: #1b1b1b;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+
+#dark .ajuda .accordion-item {
+  background-color: #1b1b1b;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+
+#dark .ajuda .accordion-body {
   background-color: #1b1b1b;
   display: flex;
   flex-direction: column;

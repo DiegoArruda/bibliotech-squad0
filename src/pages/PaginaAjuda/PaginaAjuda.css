@@ -1,10 +1,11 @@
 .accordion {
-    max-width: 800px; 
-    width: 800px;
-    margin: 0 auto;
+  max-width: 800px;
+  width: 800px;
+  margin: 0 auto;
+  background-color: #1b1b1b;
 }
 
 .carousel {
-    max-width: 100%; /* definir a largura máxima para o carousel */
-    margin: 0 auto; /* centralizar horizontalmente */
+  max-width: 100%; /* definir a largura máxima para o carousel */
+  margin: 0 auto; /* centralizar horizontalmente */
 }
