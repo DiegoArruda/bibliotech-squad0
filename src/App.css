@@ -1,19 +1,180 @@
 .app {
   font-family: Arial, Helvetica, sans-serif;
-  height: 100vh;
+  height: 100%;
   width: auto;
   display: flex;
   flex-direction: column;
 }
 
 #light {
-  background-color: #fafafa;
   color: #242422;
+}
+
+
+
+#light body {
+  background: rgb(9,80,46);
+  background: linear-gradient(0deg, rgba(9,80,46,1) 14%, rgba(226,255,224,1) 81%);
 }
 
 #dark {
   background-color: #1b1b1b;
   color: #fafafa;
+}
+
+#dark .footer-bonito {
+  background-color: #051d11;
+}
+
+#dark .card-login {
+  color: black;
+  display: flex;
+  height: 100vh;
+  width: 50%;
+  flex-direction: column;
+}
+
+#light .card-login {
+  color: black;
+  display: flex;
+  height: 100vh;
+  width: 50%;
+  flex-direction: column;
+}
+
+#dark .CardBg {
+  background: rgb(5,29,17);
+  background: linear-gradient(0deg, rgba(5,29,17,1) 25%, rgba(9,80,46,1) 85%);;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+#light .CardBg {
+  background: rgb(9,80,46);
+  background: linear-gradient(180deg, rgba(9,80,46,1) 7%, rgba(226,255,224,1) 56%, rgba(226,255,224,1) 57%);
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+#dark .adicionar-emprestimo {
+  background: rgb(5,29,17);
+  background: linear-gradient(0deg, rgba(5,29,17,1) 25%, rgba(9,80,46,1) 85%);;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+#light .adicionar-emprestimo {
+  background: rgb(9,80,46);
+  background: linear-gradient(0deg, rgba(9,80,46,1) 14%, rgba(226,255,224,1) 81%);
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+#dark .adicionar-livro {
+  background: rgb(5,29,17);
+  background: linear-gradient(0deg, rgba(5,29,17,1) 25%, rgba(9,80,46,1) 85%);;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+#light .adicionar-livro {
+  background: rgb(9,80,46);
+  background: linear-gradient(0deg, rgba(9,80,46,1) 14%, rgba(226,255,224,1) 81%);
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+#light .main {
+  background: rgb(9,80,46);
+  background: linear-gradient(0deg, rgba(9,80,46,1) 14%, rgba(226,255,224,1) 81%);
+}
+
+#dark .main {
+  background: rgb(5,29,17);
+  background: linear-gradient(0deg, rgba(5,29,17,1) 25%, rgba(9,80,46,1) 85%);;
+}
+
+#dark .home {
+  background: rgb(5,29,17);
+  background: linear-gradient(0deg, rgba(5,29,17,1) 25%, rgba(9,80,46,1) 85%);;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+}
+
+
+#light .home {
+  background: rgb(9,80,46);
+  background: linear-gradient(0deg, rgba(9,80,46,1) 14%, rgba(226,255,224,1) 81%);
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+}
+
+#dark .perfil-usuario {
+  background: rgb(5,29,17);
+  background: linear-gradient(0deg, rgba(5,29,17,1) 25%, rgba(9,80,46,1) 85%);;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+#light .perfil-usuario {
+  background: rgb(9,80,46);
+  background: linear-gradient(0deg, rgba(9,80,46,1) 14%, rgba(226,255,224,1) 81%);
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+#light .recuperar-senha {
+  background: rgb(9,80,46);
+  background: linear-gradient(180deg, rgba(9,80,46,1) 7%, rgba(226,255,224,1) 56%, rgba(226,255,224,1) 57%);
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+#dark .recuperar-senha {
+  background: rgb(5,29,17);
+  background: linear-gradient(0deg, rgba(5,29,17,1) 25%, rgba(9,80,46,1) 85%);;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+
+#dark .emprestimos {
+  background: rgb(5,29,17);
+  background: linear-gradient(0deg, rgba(5,29,17,1) 25%, rgba(9,80,46,1) 85%);;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+#light .emprestimos {
+  background: rgb(9,80,46);
+  background: linear-gradient(0deg, rgba(9,80,46,1) 14%, rgba(226,255,224,1) 81%);
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+
+#dark .ajuda {
+  background: rgb(5,29,17);
+  background: linear-gradient(0deg, rgba(5,29,17,1) 25%, rgba(9,80,46,1) 85%);;
+  display: flex;
+  height: 100vh !important;
+  flex-direction: column;
 }
 
 #dark .card-body {
@@ -25,35 +186,91 @@
 }
 
 #dark .livros {
-  background-color: #1b1b1b;
+  background: rgb(5,29,17);
+  background: linear-gradient(0deg, rgba(5,29,17,1) 25%, rgba(9,80,46,1) 85%);;
   display: flex;
+  height: 100%;
+  min-height: 100vh;
   flex-direction: column;
-  height: fit-content;
 }
+
+#light .livros {
+  background: rgb(9,80,46);
+  background: linear-gradient(0deg, rgba(9,80,46,1) 14%, rgba(226,255,224,1) 81%);
+  display: flex;
+  height: 100%;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#dark .loja {
+  background: rgb(5,29,17);
+  background: linear-gradient(0deg, rgba(5,29,17,1) 25%, rgba(9,80,46,1) 85%);;
+  display: flex;
+  height: 100%;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#light .loja {
+  background: rgb(9,80,46);
+  background: linear-gradient(180deg, rgba(9,80,46,1) 7%, rgba(226,255,224,1) 56%, rgba(226,255,224,1) 57%);
+  display: flex;
+  height: 100%;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#light .politica {
+  background: rgb(9,80,46);
+  background: linear-gradient(0deg, rgba(9,80,46,1) 14%, rgba(226,255,224,1) 81%);
+  padding: 50px;
+  display: flex;
+  height: 100%;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#light .quizz {
+  background: rgb(9,80,46);
+  background: linear-gradient(180deg, rgba(9,80,46,1) 7%, rgba(226,255,224,1) 56%, rgba(226,255,224,1) 57%);
+  display: flex;
+  height: 100%;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
 
 #dark .ajuda {
-  background-color: #1b1b1b;
+  background: rgb(5,29,17);
+  background: linear-gradient(0deg, rgba(5,29,17,1) 25%, rgba(9,80,46,1) 85%);;
   display: flex;
   flex-direction: column;
-  height: fit-content;
+  height: 100vh;
 }
 
+#light .ajuda {
+  background: rgb(9,80,46);
+  background: linear-gradient(0deg, rgba(9,80,46,1) 14%, rgba(226,255,224,1) 81%);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+
 #dark .ajuda .accordion-header {
-  background-color: #1b1b1b;
   display: flex;
   flex-direction: column;
   height: fit-content;
 }
 
 #dark .ajuda .accordion-item {
-  background-color: #1b1b1b;
   display: flex;
   flex-direction: column;
   height: fit-content;
 }
 
 #dark .ajuda .accordion-body {
-  background-color: #1b1b1b;
   display: flex;
   flex-direction: column;
   height: fit-content;
@@ -68,5 +285,8 @@
 }
 
 #dark body {
-  background-color: #111;
+  background: rgb(5,29,17);
+  background: linear-gradient(0deg, rgba(5,29,17,1) 25%, rgba(9,80,46,1) 85%);;
 }
+
+

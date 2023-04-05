@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { Menu } from "../../components/Menu/Menu";
 import { AuthContext } from "../../contexts/AuthContext";
+import "./Root.css"
 
 // Layout principal do App com Navbar Fixa
 // As páginas com Navbar fixa: home, livros, empréstimos, etc
@@ -21,7 +22,7 @@ export function Root() {
       <header>
         <Menu />
       </header>
-      <main>
+      <main className="main">
         <Outlet />
       </main>
     </>

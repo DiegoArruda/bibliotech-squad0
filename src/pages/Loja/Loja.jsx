@@ -1,14 +1,13 @@
 import "./Loja.css";
 import { Footer } from "../../components/Footer/Footer";
-import { Button, Card, CardGroup, Carousel, Col, Container, Modal, Nav, Navbar, Row } from "react-bootstrap";
-import logoIcon from "./../../assets/icons/livros.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Card,Carousel, Container, Nav, Navbar} from "react-bootstrap";
+import Logo from "../../assets/icons/LogoBibliotechSemTitulo.svg"
+import { Link } from "react-router-dom";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { useContext, useEffect, useState } from "react";
-import pergunta1 from "./../../assets/images/paginaAjuda/cadastro1.png"
-import pergunta2 from "./../../assets/images/paginaAjuda/editar1.png"
-import pergunta3 from "./../../assets/images/paginaAjuda/emprestar1.png"
-import pergunta4 from "./../../assets/images/paginaAjuda/status1.png"
+import banner1 from "../../assets/images/Loja/Bem-Vindo.jpeg"
+import banner2 from "../../assets/images/Loja/Happy.jpeg"
+import banner3 from "../../assets/images/Loja/Presente.jpeg"
 import { getLivros } from "../../firebase/livros"
 import { ModalLoja } from "./ModalLoja";
 
@@ -18,7 +17,6 @@ import { ModalLoja } from "./ModalLoja";
 export function Loja() {
 
     function Menu() {
-        const navigate = useNavigate();
       
         const { theme, switchTheme } = useContext(ThemeContext);
       
@@ -28,7 +26,7 @@ export function Loja() {
             <Container fluid>
               <Navbar.Brand>
                 <Link to="/">
-                  <img src={logoIcon} width="32" alt="Logo" />
+                  <img src={Logo} width="32" alt="Logo" />
                 </Link>
               </Navbar.Brand>
               <Navbar.Toggle />
@@ -66,55 +64,34 @@ export function Loja() {
 
     return (
         <>
+        
 
         {/* NavBar */}
         <Menu/>
 
         {/* Carrossel de imagens de livros */}
-        <Carousel className="carousel-loja1" variant="dark">
+        <div className="loja">
+        <Carousel className="carousel-loja1" variant="dark" >
 
             <Carousel.Item>
                 <img 
-                className="d-block w-100"
-                src={pergunta1} 
+                className="d-block w-100 mt-5"
+                src={banner1} 
                 alt="" />
-                <Carousel.Caption>
-                    <h3>Produto 1</h3>
-                    <p>Descrição do Produto</p>
-                </Carousel.Caption>
             </Carousel.Item>
 
             <Carousel.Item>
                 <img 
-                className="d-block w-100" 
-                src={pergunta2} 
+                className="d-block w-100 mt-5" 
+                src={banner2} 
                 alt="" />
-                <Carousel.Caption>
-                    <h3>Produto 2</h3>
-                    <p>Descrição do Produto</p>
-                </Carousel.Caption>
             </Carousel.Item>
 
             <Carousel.Item>
                 <img 
-                className="d-block w-100"
-                src={pergunta3} 
+                className="d-block w-100 mt-5"
+                src={banner3} 
                 alt="" />
-                <Carousel.Caption>
-                    <h3>Produto 3</h3>
-                    <p>Descrição do Produto</p>
-                </Carousel.Caption>
-            </Carousel.Item>
-
-            <Carousel.Item>
-                <img 
-                className="d-block w-100" 
-                src={pergunta4} 
-                alt="" />
-                <Carousel.Caption>
-                    <h3>Produto 4</h3>
-                    <p>Descrição do Produto</p>
-                </Carousel.Caption>
             </Carousel.Item>
 
             
@@ -151,6 +128,7 @@ export function Loja() {
             
         }
         </Container>
+        </div>
         {/* Footer */}
         <Footer/>
         </>

@@ -2,7 +2,7 @@ import "./Quizz.css";
 import { useState } from "react";
 import { Button, Card, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import loginImg from "../../assets/images/login.png";
+import Logo from "../../assets/icons/LogoBibliotech.svg"
 import { Footer } from "../../components/Footer/Footer";
 
 const questions = [
@@ -124,6 +124,7 @@ export function Quizz() {
 
   return (
     <>
+      <div className="quizz">
       <Container className="container-quizz">
 
         <Card className="card-quizz" border="success">
@@ -133,7 +134,7 @@ export function Quizz() {
                 Quem escreveu...?
               </Card.Header>
               <p className="text-center mb-3" style={{ marginBottom: "5px" }}>
-                <img className="img-quizz" src={loginImg} width="250" alt="Logo" />
+                <img className="img-quizz" src={Logo} width="250" alt="Logo" />
               </p>
               <Card.Body>
                 <Card.Title className="titulo">
@@ -156,7 +157,7 @@ export function Quizz() {
                 Quem escreveu...? {currentQuestion + 1}/{questions.length}
               </Card.Header>
               <p className="text-center">
-                <img className="img-quizz" src={loginImg} width="250" alt="Logo" />
+                <img className="img-quizz" src={Logo} width="250" alt="Logo" />
               </p>
               <div className="question-section">
                 <div className="question-text">
@@ -185,7 +186,8 @@ export function Quizz() {
           )}
         </Card>
       </Container>
-      <Footer></Footer>
+      </div>
+      <Footer/>
     </>
   );
 }

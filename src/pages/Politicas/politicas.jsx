@@ -7,7 +7,11 @@ import { Card } from "react-bootstrap";
 
 export function Politicas() {
   return (
+    <>
+    <div className="politica">
+      
     <Container>
+    <Card className="p-5">
       <h1>Politica de Privacidade</h1>
       <Tabs
         defaultActiveKey="info"
@@ -58,6 +62,7 @@ export function Politicas() {
           </Accordion>
         </Tab>
         <Tab eventKey="use" title="Como usamos suas informações">
+          <div className="d-flex justify-content-center">
           <Card style={{ width: "18rem" }}>
             <Card.Body>
               <Card.Title>Para fornecer nossos serviços</Card.Title>
@@ -78,8 +83,13 @@ export function Politicas() {
               </Card.Text>
             </Card.Body>
           </Card>
+          </div>
         </Tab>
       </Tabs>
+      </Card>
     </Container>
+    
+    </div>
+    </>
   );
 }

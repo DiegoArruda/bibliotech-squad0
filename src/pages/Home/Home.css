@@ -2,6 +2,10 @@
     color:green
 }
 
+.home {
+    height: 100%;
+}
+
 #status-pendente {
     color:yellow
 }

@@ -1,6 +1,8 @@
 .carousel-loja1 {
     width: 600px;
-    height: 600px;
+    height: auto;
+    margin-bottom: 45px;
+    margin-top: 45px;
 }
 
 

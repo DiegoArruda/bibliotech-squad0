@@ -1,10 +1,10 @@
 import "./Menu.css";
 import { Container, Nav, Navbar } from "react-bootstrap";
-import logoIcon from "./../../assets/icons/livros.png";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../firebase/auth";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { useContext } from "react";
+import Logo from "../../assets/icons/LogoBibliotechSemTitulo.svg"
 
 export function Menu() {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ export function Menu() {
       <Container fluid>
         <Navbar.Brand>
           <Link to="/">
-            <img src={logoIcon} width="32" alt="Logo" />
+            <img src={Logo} width="32" alt="Logo" />
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle />
