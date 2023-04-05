@@ -130,6 +130,10 @@ export function Cadastro() {
         <img src={logoIcon}  width="32" alt="" />
         Tente nosso Quiz
       </Button>
+      <Button className="m-3" variant="outline-success" as={Link} to="/loja">
+        <img src={logoIcon}  width="32" alt="" />
+        Visite nossa loja
+      </Button>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email</Form.Label>
