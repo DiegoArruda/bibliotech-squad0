@@ -118,7 +118,7 @@ export function Quizz() {
 
     return(
         <>
-        <Container className="container">
+        <Container className="container-quizz">
         <Card className="card" border="success">
             {showScore ? (
                 <div className="score-section">

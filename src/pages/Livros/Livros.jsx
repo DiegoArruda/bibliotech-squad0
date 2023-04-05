@@ -21,7 +21,7 @@ export function Livros() {
 
   function initializeTable() {
     const livrosRef = collection(db, "livros");
-    const q = query(livrosRef, where("active", "==", true));
+    const q = query(livrosRef, where("active", "===", true));
     getDocs(q).then((snapshot) => {
       let paginaAtual = []
       snapshot.forEach((doc) => {

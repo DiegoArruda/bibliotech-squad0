@@ -22,6 +22,7 @@ import { Loader } from "./components/Loader/Loader";
 import { ThemeContext } from "./contexts/ThemeContext";
 import useLocalStorage from "use-local-storage";
 import { Quizz } from "./pages/Quizz/Quizz";
+import { Loja } from "./pages/Loja/Loja";
 
 
 
@@ -83,6 +84,8 @@ export function App() {
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/politicas" element={<Politicas/>} />
             <Route path="/quizz" element={<Quizz/>} />
+            <Route path="/loja" element={<Loja/>} />
+
 
           </Routes>
         
