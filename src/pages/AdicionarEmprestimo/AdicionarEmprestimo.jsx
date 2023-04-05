@@ -9,6 +9,9 @@ import { getLivro, getLivros } from "../../firebase/livros";
 export function AdicionarEmprestimo() {
   const [livros, setLivros] = useState([]);
 
+  const dayjs = require("dayjs");
+  const today = dayjs();
+
   const {
     register,
     handleSubmit,
@@ -66,6 +69,7 @@ export function AdicionarEmprestimo() {
             <Form.Label>E-mail</Form.Label>
             <Form.Control
               type="email"
+              min={today}
               className={errors.email && "is-invalid"}
               {...register("email", {
                 required: "E-mail é obrigatório!",
@@ -110,10 +114,10 @@ export function AdicionarEmprestimo() {
             <Form.Label>Data de Devolução</Form.Label>
             <Form.Control
               type="date"
+              min={today.format("YYYY-MM-DD")}
+              max={today.add(7, "day").format("YYYY-MM-DD")}
               className={errors.dataDevolucao && "is-invalid"}
-              {...register("dataDevolucao", {
-                required: "Data de devolução inválida!",
-              })}
+              {...register("dataDevolucao")}
             ></Form.Control>
           </Form.Group>
           <Button type="submit" variant="success">
