@@ -15,6 +15,7 @@ import {
   startAfter,
 } from "firebase/firestore";
 import { db } from "../../firebase/config";
+import { updateEmprestimo } from "../../firebase/emprestimos";
 
 export function Emprestimos() {
   const [emprestimos, setEmprestimos] = useState(null);
@@ -100,6 +101,9 @@ export function Emprestimos() {
     const dataDevolucao = dayjs(emprestimo.dataDevolucao);
     const diff = today.diff(dataDevolucao, "day");
     /* const loanToDeliver = loanStatus; */
+    if (emprestimo.status === "Devolvido") {
+      return <Badge bg="success">{emprestimo.status}</Badge>;
+    }
 
     if (diff <= 0) {
       emprestimo.status = "Pendente";
@@ -111,6 +115,12 @@ export function Emprestimos() {
     /*  emprestimo.status = "Devolvido"; */
     /*  return <Badge bg="success">{emprestimo.status}</Badge>; */
     /* }  */
+  }
+
+  function changeStatus(status, emprestimo) {
+    emprestimo.status = status;
+    updateEmprestimo(emprestimo.id, emprestimo);
+    setEmprestimos([...emprestimos]);
   }
 
   //Utilização do dayjs
@@ -162,10 +172,16 @@ export function Emprestimos() {
                         title="Status"
                         menuVariant="dark"
                       >
-                        <Dropdown.Item onSelect={bookLoanStatus(emprestimo)}>
+                        <Dropdown.Item
+                          onClick={() => changeStatus("Pendente", emprestimo)}
+                        >
                           Pendente
                         </Dropdown.Item>
-                        <Dropdown.Item>Devolvido</Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => changeStatus("Devolvido", emprestimo)}
+                        >
+                          Devolvido
+                        </Dropdown.Item>
                       </DropdownButton>
                     </td>
                     <td>{dataEmprestimo}</td>
