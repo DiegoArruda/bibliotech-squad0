@@ -1,5 +1,5 @@
 import { Button, Container, Form, InputGroup } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import logoIcon from "../../assets/icons/livros.png";
 import googleIcon from "../../assets/icons/google-white.svg";
 import githubIcon from "../../assets/icons/github.svg";
@@ -7,9 +7,10 @@ import { useForm } from "react-hook-form";
 import { cadastrarEmailSenha, loginGoogle, loginFacebook, loginGithub } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import facebookIcon from "../../assets/icons/facebook-icon.svg"
 import { Footer } from "../../components/Footer/Footer";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export function Cadastro() {
   const [hidePass, setHidePass] = useState(true);
@@ -89,6 +90,14 @@ export function Cadastro() {
         duration: 2500,
       });
     });
+  }
+
+
+  const usuarioLogado = useContext(AuthContext);
+
+  // Se tiver dados no objeto, está logado
+  if (usuarioLogado !== null) {
+    return <Navigate to="/" />;
   }
 
   return (

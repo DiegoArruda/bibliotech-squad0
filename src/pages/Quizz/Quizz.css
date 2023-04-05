@@ -1,43 +1,41 @@
 .container-quizz {
-    display: flex;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .card {
-    width: 500px;
-    height: 590px;
+  width: 500px;
+  height: 590px;
 }
 
-.card-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
-
 
 .botao-resposta {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 45%;
-    margin-bottom: 15px;
-    margin-left: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 45%;
+  margin-bottom: 15px;
+  margin-left: 150px;
 }
 
 .titulo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1000;
 }
 
 img {
-    margin-bottom: 0;
-    padding-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
-

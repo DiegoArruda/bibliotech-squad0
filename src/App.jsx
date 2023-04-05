@@ -24,18 +24,13 @@ import useLocalStorage from "use-local-storage";
 import { Quizz } from "./pages/Quizz/Quizz";
 import { Loja } from "./pages/Loja/Loja";
 
-
-
-
-
-
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
-  const [ load, setLoad ] = useState(null);
-  
+  const [load, setLoad] = useState(null);
+
   //useState com uso do LocalStorage para o Dark Theme
   const [theme, setTheme] = useLocalStorage("theme" ? "light" : "dark");
-  
+
   //Função para a troca do tema
   const switchTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
@@ -44,7 +39,7 @@ export function App() {
   useEffect(() => {
     // Monitorar/detectar o usuário conectado
     // Fica sabendo quando loga/desloga
-    setTimeout(() => setLoad(true) , 2000)
+    setTimeout(() => setLoad(true), 2000);
     onAuthStateChanged(auth, (user) => {
       // user é nulo = deslogado
       // user tem objeto = logado
@@ -54,7 +49,6 @@ export function App() {
     // Esse efeito irá rodar apenas uma vez
     // Quando o App for renderizado/inicializado
   }, []);
-
 
   if (load ===  null) {
 
@@ -96,5 +90,4 @@ export function App() {
      </ThemeContext.Provider>
     </>
   );
-}
 }
