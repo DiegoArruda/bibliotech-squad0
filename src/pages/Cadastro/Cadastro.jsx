@@ -108,42 +108,51 @@ export function Cadastro() {
 
   return (
     <>
-      <Container fluid className="my-5">
-        <p className="text-center">
-          <img src={logoIcon} width="256" alt="Logo do app" />
-        </p>
-        <h4>Faça parte da nossa plataforma</h4>
-        <p className="text-muted">
-          Já tem conta? <Link to="/login">Entre</Link>
-        </p>
-        <hr />
-        <Button className="m-3" variant="danger" onClick={onLoginGoogle}>
-          <img src={googleIcon} width="32" alt="Logo do google" />
-          Entrar com o Google
-        </Button>
-        <Button
-          className="m-3"
-          variant="primary text-light"
-          onClick={onLoginFacekook}
-        >
-          <img src={facebookIcon} width="32" alt="Facebook icon" /> Entrar com o
-          Facebook
-        </Button>
-        <Button
-          className="m-3"
-          variant="dark text-light"
-          onClick={onLoginGithub}
-        >
-          <img src={githubIcon} width="32" alt="Facebook icon" /> Entrar com o
-          Github
-        </Button>
-        <Button className="m-3" variant="outline-success" as={Link} to="/quizz">
-          <img src={logoIcon} width="32" alt="" />
-          Tente nosso Quiz
-        </Button>
-        <Form onSubmit={handleSubmit(onSubmit)}>
-          <Form.Group className="mb-3" controlId="email">
-            <Form.Label>Email</Form.Label>
+    <Container fluid className="my-5">
+      <p className="text-center">
+        <img src={logoIcon} width="256" alt="Logo do app" />
+      </p>
+      <h4>Faça parte da nossa plataforma</h4>
+      <p className="text-muted">
+        Já tem conta? <Link to="/login">Entre</Link>
+      </p>
+      <hr />
+      <Button className="m-3" variant="danger" onClick={onLoginGoogle}>
+        <img src={googleIcon} width="32" alt="Logo do google" />
+        Entrar com o Google
+      </Button>
+      <Button className="m-3" variant="primary text-light" onClick={onLoginFacekook}>
+        <img src={facebookIcon} width="32" alt="Facebook icon" /> Entrar com o
+        Facebook
+      </Button>
+      <Button className="m-3" variant="dark text-light" onClick={onLoginGithub}>
+        <img src={githubIcon} width="32" alt="Facebook icon" /> Entrar com o
+        Github
+      </Button>
+      <Button className="m-3" variant="outline-success" as={Link} to="/quizz">
+        <img src={logoIcon}  width="32" alt="" />
+        Tente nosso Quiz
+      </Button>
+      <Button className="m-3" variant="outline-success" as={Link} to="/loja">
+        <img src={logoIcon}  width="32" alt="" />
+        Visite nossa loja
+      </Button>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form.Group className="mb-3" controlId="email">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            type="email"
+            className={errors.email && "is-invalid"}
+            placeholder="Seu email"
+            {...register("email", { required: "O email é obrigatório" })}
+          />
+          <Form.Text className="invalid-feedback">
+            {errors.email?.message}
+          </Form.Text>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="password">
+          <Form.Label>Senha</Form.Label>
+          <InputGroup>
             <Form.Control
               type="email"
               className={errors.email && "is-invalid"}
