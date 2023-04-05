@@ -24,6 +24,7 @@ import useLocalStorage from "use-local-storage";
 import { Quizz } from "./pages/Quizz/Quizz";
 import { Loja } from "./pages/Loja/Loja";
 import { NotFound } from "./pages/NotFound/NotFound";
+import { PerfilUsuario } from "./pages/PerfilUsuario/PerfilUsuario";
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -63,6 +64,7 @@ export function App() {
                 <Routes>
                   <Route path="/" element={<Root />}>
                     <Route path="/" element={<Home />} />
+                    <Route path="/perfil" element={<PerfilUsuario/>} />
                     <Route path="/livros" element={<Livros />} />
                     <Route
                       path="/livros/adicionar"
