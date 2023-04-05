@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Badge, Button, Container, Pagination, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 import { Loader } from "../../components/Loader/Loader";
 import {
   collection,
@@ -17,7 +18,6 @@ import { db } from "../../firebase/config";
 
 export function Emprestimos() {
   const [emprestimos, setEmprestimos] = useState(null);
-  
 
   const [last, setLast] = useState(null);
   const [first, setFirst] = useState(null);
@@ -93,19 +93,24 @@ export function Emprestimos() {
       }
     });
   }
-  //função para definir status do emprestimo
+
+  //Função para definir status do emprestimo para atrasado ou pendente
   function bookLoanStatus(emprestimo) {
     const today = dayjs();
     const dataDevolucao = dayjs(emprestimo.dataDevolucao);
-    const diff = dataDevolucao.diff(today, dataDevolucao);
+    const diff = today.diff(dataDevolucao, "day");
+    /* const loanToDeliver = loanStatus; */
 
-    if (diff >= 0) {
+    if (diff <= 0) {
       emprestimo.status = "Pendente";
       return <Badge bg="warning">{emprestimo.status}</Badge>;
-    } else if (diff < 0) {
+    } else if (diff > 0) {
       emprestimo.status = "Atrasado";
       return <Badge bg="danger">{emprestimo.status}</Badge>;
-    }
+    } /*  else if ((loanToDeliver = "Devolvido")) { */
+    /*  emprestimo.status = "Devolvido"; */
+    /*  return <Badge bg="success">{emprestimo.status}</Badge>; */
+    /* }  */
   }
 
   //Utilização do dayjs
@@ -132,6 +137,7 @@ export function Emprestimos() {
                 <th>Telefone</th>
                 <th>Livro</th>
                 <th>Status</th>
+                <th>Atualizar Status</th>
                 <th>Data de Empréstimo</th>
                 <th>Data de Devolução</th>
                 <th>Ações</th>
@@ -150,6 +156,18 @@ export function Emprestimos() {
                     <td>{emprestimo.telefone}</td>
                     <td>{emprestimo.livro.titulo}</td>
                     <td>{bookLoanStatus(emprestimo)}</td>
+                    <td>
+                      <DropdownButton
+                        variant="dark"
+                        title="Status"
+                        menuVariant="dark"
+                      >
+                        <Dropdown.Item onSelect={bookLoanStatus(emprestimo)}>
+                          Pendente
+                        </Dropdown.Item>
+                        <Dropdown.Item>Devolvido</Dropdown.Item>
+                      </DropdownButton>
+                    </td>
                     <td>{dataEmprestimo}</td>
                     <td>{dataDevolucao.format("DD/MM/YYYY")}</td>
                     <td>
