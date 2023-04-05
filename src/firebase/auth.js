@@ -7,6 +7,9 @@ import {
   signOut,
   FacebookAuthProvider,
   GithubAuthProvider,
+  updateProfile,
+  updateEmail,
+  updatePassword,
 } from "firebase/auth";
 import { auth } from "./config";
 
@@ -59,4 +62,10 @@ export async function logout() {
 
 export async function RecSenha(email) {
   await sendPasswordResetEmail(auth, email);
+}
+
+export async function editarUsuario(user,data){
+  await updateProfile(user,{displayName:data.displayName});
+  await updateEmail(user,data.email);
+  await updatePassword(user,data.senha)
 }

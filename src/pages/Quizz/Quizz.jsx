@@ -126,14 +126,14 @@ export function Quizz() {
     <>
       <Container className="container-quizz">
 
-        <Card className="card" border="success">
+        <Card className="card-quizz" border="success">
           {showScore ? (
             <div className="score-section">
               <Card.Header className="card-header text-center">
                 Quem escreveu...?
               </Card.Header>
               <p className="text-center mb-3" style={{ marginBottom: "5px" }}>
-                <img src={loginImg} width="250" alt="Logo" />
+                <img className="img-quizz" src={loginImg} width="250" alt="Logo" />
               </p>
               <Card.Body>
                 <Card.Title className="titulo">
@@ -156,7 +156,7 @@ export function Quizz() {
                 Quem escreveu...? {currentQuestion + 1}/{questions.length}
               </Card.Header>
               <p className="text-center">
-                <img src={loginImg} width="250" alt="Logo" />
+                <img className="img-quizz" src={loginImg} width="250" alt="Logo" />
               </p>
               <div className="question-section">
                 <div className="question-text">
