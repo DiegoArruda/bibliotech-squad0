@@ -50,44 +50,51 @@ export function App() {
     // Quando o App for renderizado/inicializado
   }, []);
 
-  if (load ===  null) {
-
-    return <Loader/>
-
-  } else  {
-
-  return (
-    <>
-      <ThemeContext.Provider value={{ theme, switchTheme }}>
-        <div className="app" id={theme}>
-      <AuthContext.Provider value={usuarioLogado}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Root />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/livros" element={<Livros />} />
-              <Route path="/livros/adicionar" element={<AdicionarLivro />} />
-              <Route path="/livros/editar/:id" element={<EditarLivro />} />
-              <Route path="/emprestimos" element={<Emprestimos />} />
-              <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
-              <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
-              <Route path="/ajuda" element={<PaginaAjuda />} />
-            </Route>
-            <Route path="/login" element={<Login />} />
-            <Route path="/login/recuperar" element={<RecuperarSenha />} />
-            <Route path="/cadastro" element={<Cadastro />} />
-            <Route path="/politicas" element={<Politicas/>} />
-            <Route path="/quizz" element={<Quizz/>} />
-            <Route path="/loja" element={<Loja/>} />
-
-
-          </Routes>
-        
-        </BrowserRouter>
-      </AuthContext.Provider>
-      <Toaster />
-      </div>
-     </ThemeContext.Provider>
-    </>
-  );
+  if (load === null) {
+    return <Loader />;
+  } else {
+    return (
+      <>
+        <ThemeContext.Provider value={{ theme, switchTheme }}>
+          <div className="app" id={theme}>
+            <AuthContext.Provider value={usuarioLogado}>
+              <BrowserRouter>
+                <Routes>
+                  <Route path="/" element={<Root />}>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/livros" element={<Livros />} />
+                    <Route
+                      path="/livros/adicionar"
+                      element={<AdicionarLivro />}
+                    />
+                    <Route
+                      path="/livros/editar/:id"
+                      element={<EditarLivro />}
+                    />
+                    <Route path="/emprestimos" element={<Emprestimos />} />
+                    <Route
+                      path="/emprestimos/adicionar"
+                      element={<AdicionarEmprestimo />}
+                    />
+                    <Route
+                      path="/emprestimos/editar/:id"
+                      element={<EditarEmprestimo />}
+                    />
+                    <Route path="/ajuda" element={<PaginaAjuda />} />
+                  </Route>
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/login/recuperar" element={<RecuperarSenha />} />
+                  <Route path="/cadastro" element={<Cadastro />} />
+                  <Route path="/politicas" element={<Politicas />} />
+                  <Route path="/quizz" element={<Quizz />} />
+                  <Route path="/loja" element={<Loja />} />
+                </Routes>
+              </BrowserRouter>
+            </AuthContext.Provider>
+            <Toaster />
+          </div>
+        </ThemeContext.Provider>
+      </>
+    );
+  }
 }
