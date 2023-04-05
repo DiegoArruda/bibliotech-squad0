@@ -1,11 +1,11 @@
 import { Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import logo from "../../assets/images/logo1.png";
+import logo from "../../assets/icons/LogoBibliotechSemTitulo.svg";
 import "./Footer.css"
 
 export function Footer() {
     return (
-        <footer>
+        <footer className="footer-bonito">
             <Container className="d-flex justify-content-center ">
                 <div className="col-lg-5 mb-0 mt-5">
                     <img src={logo} width="100" alt="logo"  />

@@ -1,6 +1,7 @@
 import { Button, Card, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
 import logoIcon from "../../assets/icons/livros.png";
+import Logo from "../../assets/icons/LogoBibliotech.svg"
 import googleIcon from "../../assets/icons/google-white.svg";
 import githubIcon from "../../assets/icons/github.svg";
 import { useForm } from "react-hook-form";
@@ -109,6 +110,7 @@ export function Cadastro() {
 
   return (
     <>
+    <div className="CardBg">
       <Container fluid className="my-5">
         <Container className="card-login">
           <Row className="d-flex justify-content-center align-items-center">
@@ -116,7 +118,7 @@ export function Cadastro() {
               <Card className="p-5">
                 <div>
                   <p className="text-center">
-                    <img src={logoIcon} width="256" alt="Logo do app" />
+                    <img src={Logo} width="256" alt="Logo do app" />
                   </p>
                 </div>
                 <div>
@@ -126,25 +128,22 @@ export function Cadastro() {
               </p>
               <hr />
               <div className="d-flex justify-content-center align-items-center">
-              <Button className="m-3" variant="danger" onClick={onLoginGoogle}>
+              <Button className="botao-icone" variant="danger" onClick={onLoginGoogle}>
                 <img src={googleIcon} width="32" alt="Logo do google" />
-                Entrar com o Google
               </Button>
               <Button
-                className="m-3"
+                className="botao-icone"
                 variant="primary text-light"
                 onClick={onLoginFacekook}
               >
-                <img src={facebookIcon} width="32" alt="Facebook icon" /> Entrar com o
-                Facebook
+                <img src={facebookIcon} width="32" alt="Facebook icon" /> 
               </Button>
               <Button
-                className="m-3"
+                className="botao-icone"
                 variant="dark text-light"
                 onClick={onLoginGithub}
               >
-                <img src={githubIcon} width="32" alt="Facebook icon" /> Entrar com o
-                Github
+                <img src={githubIcon} width="32" alt="Facebook icon" />
               </Button>
               </div>
               <div className="d-flex justify-content-center align-items-center">
@@ -169,20 +168,6 @@ export function Cadastro() {
                   <Form.Text className="invalid-feedback">
                     {errors.email?.message}
                   </Form.Text>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="password">
-                  <Form.Label>Senha</Form.Label>
-                  <InputGroup>
-                    <Form.Control
-                      type="email"
-                      className={errors.email && "is-invalid"}
-                      placeholder="Seu email"
-                      {...register("email", { required: "O email é obrigatório" })}
-                    />
-                    <Form.Text className="invalid-feedback">
-                      {errors.email?.message}
-                    </Form.Text>
-                  </InputGroup>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="password">
                   <Form.Label>Senha</Form.Label>
@@ -216,6 +201,7 @@ export function Cadastro() {
           </Row>
         </Container>
       </Container>
+      </div>
       <Footer />
     </>
   );

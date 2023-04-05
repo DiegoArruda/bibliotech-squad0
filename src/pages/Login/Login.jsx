@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/icons/google-white.svg";
-import loginImg from "../../assets/images/login.png";
 import githubIcon from "../../assets/icons/github.svg";
 import { AuthContext } from "../../contexts/AuthContext";
 import { loginGoogle, loginEmailSenha, loginFacebook, loginGithub } from "../../firebase/auth";
@@ -12,6 +11,7 @@ import facebookIcon from "../../assets/icons/facebook-icon.svg"
 import { Footer } from "../../components/Footer/Footer";
 import logoIcon from "../../assets/icons/livros.png";
 import "./Login.css"
+import Logo from "../../assets/icons/LogoBibliotech.svg"
 
 
 
@@ -102,6 +102,7 @@ export function Login() {
 
   return (
     <>
+    <div className="CardBg">
     <Container fluid className="my-5">
       <Container className="card-login">
         <Row className="d-flex justify-content-center align-items-center">
@@ -109,7 +110,7 @@ export function Login() {
             <Card className="p-5">
             <div>
                 <p className="text-center">
-                  <img src={loginImg} width="256" alt="Logo" />
+                  <img src={Logo} width="256" alt="Logo" />
                 </p>
             </div>
 
@@ -189,6 +190,7 @@ export function Login() {
         </Row>
       </Container>
     </Container>
+    </div>
     <Footer/>
     </>
   );

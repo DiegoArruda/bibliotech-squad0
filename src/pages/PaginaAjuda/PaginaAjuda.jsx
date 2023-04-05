@@ -3,10 +3,9 @@ import AccordionBody from "react-bootstrap/esm/AccordionBody";
 import AccordionHeader from "react-bootstrap/esm/AccordionHeader";
 import AccordionItem from "react-bootstrap/esm/AccordionItem";
 import "./PaginaAjuda.css";
-import pergunta1 from "./../../assets/images/paginaAjuda/cadastro1.png";
-import pergunta2 from "./../../assets/images/paginaAjuda/editar1.png";
-import pergunta3 from "./../../assets/images/paginaAjuda/emprestar1.png";
-import pergunta4 from "./../../assets/images/paginaAjuda/status1.png";
+import Ajuda1 from "./../../assets/images/paginaAjuda/Ajuda1.jpg";
+import Ajuda2 from "./../../assets/images/paginaAjuda/Ajuda2.jpg";
+import Ajuda3 from "./../../assets/images/paginaAjuda/Ajuda3.jpg";
 
 export function PaginaAjuda() {
   return (
@@ -29,36 +28,24 @@ export function PaginaAjuda() {
                     <Carousel.Item>
                       <img
                         className="d-block w-100"
-                        src={pergunta1}
+                        src={Ajuda1}
                         alt="Imagem1"
                       />
-                      <Carousel.Caption>
-                        <h3>Passo 1</h3>
-                        <p>Faça isso</p>
-                      </Carousel.Caption>
                     </Carousel.Item>
 
                     <Carousel.Item>
                       <img
                         className="d-block w-100"
-                        src={pergunta1}
+                        src={Ajuda2}
                         alt="Imagem2"
                       />
-                      <Carousel.Caption>
-                        <h3>Passo 2</h3>
-                        <p>Faça isso</p>
-                      </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
                       <img
                         className="d-block w-100"
-                        src={pergunta1}
+                        src={Ajuda3}
                         alt="Imagem3"
                       />
-                      <Carousel.Caption>
-                        <h3>Passo 3</h3>
-                        <p>Faça isso</p>
-                      </Carousel.Caption>
                     </Carousel.Item>
                   </Carousel>
                 </div>
@@ -77,7 +64,7 @@ export function PaginaAjuda() {
                     <Carousel.Item>
                       <img
                         className="d-block w-100"
-                        src={pergunta2}
+                        src={Ajuda1}
                         alt="Imagem1"
                       />
                       <Carousel.Caption variant="dark">
@@ -89,25 +76,17 @@ export function PaginaAjuda() {
                     <Carousel.Item>
                       <img
                         className="d-block w-100"
-                        src={pergunta2}
+                        src={Ajuda2}
                         alt="Imagem2"
                       />
-                      <Carousel.Caption>
-                        <h3>Passo 2</h3>
-                        <p>Faça isso</p>
-                      </Carousel.Caption>
                     </Carousel.Item>
 
                     <Carousel.Item>
                       <img
                         className="d-block w-100"
-                        src={pergunta2}
+                        src={Ajuda3}
                         alt="Imagem3"
                       />
-                      <Carousel.Caption>
-                        <h3>Passo 3</h3>
-                        <p>Faça isso</p>
-                      </Carousel.Caption>
                     </Carousel.Item>
                   </Carousel>
                 </div>
@@ -123,37 +102,25 @@ export function PaginaAjuda() {
                     <Carousel.Item>
                       <img
                         className="d-block w-100"
-                        src={pergunta3}
+                        src={Ajuda1}
                         alt="Imagem1"
                       />
-                      <Carousel.Caption>
-                        <h3>Passo 1</h3>
-                        <p>Faça isso</p>
-                      </Carousel.Caption>
                     </Carousel.Item>
 
                     <Carousel.Item>
                       <img
                         className="d-block w-100"
-                        src={pergunta3}
+                        src={Ajuda2}
                         alt="Imagem2"
                       />
-                      <Carousel.Caption>
-                        <h3>Passo 2</h3>
-                        <p>Faça isso</p>
-                      </Carousel.Caption>
                     </Carousel.Item>
 
                     <Carousel.Item>
                       <img
                         className="d-block w-100"
-                        src={pergunta3}
+                        src={Ajuda3}
                         alt="Imagem3"
                       />
-                      <Carousel.Caption>
-                        <h3>Passo 3</h3>
-                        <p>Faça isso</p>
-                      </Carousel.Caption>
                     </Carousel.Item>
                   </Carousel>
                 </div>
@@ -172,37 +139,25 @@ export function PaginaAjuda() {
                     <Carousel.Item>
                       <img
                         className="d-block w-100"
-                        src={pergunta4}
+                        src={Ajuda1}
                         alt="Imagem1"
                       />
-                      <Carousel.Caption>
-                        <h3>Passo 1</h3>
-                        <p>Faça isso</p>
-                      </Carousel.Caption>
                     </Carousel.Item>
 
                     <Carousel.Item>
                       <img
                         className="d-block w-100"
-                        src={pergunta4}
+                        src={Ajuda2}
                         alt="Imagem2"
                       />
-                      <Carousel.Caption>
-                        <h3>Passo 2</h3>
-                        <p>Faça isso</p>
-                      </Carousel.Caption>
                     </Carousel.Item>
 
                     <Carousel.Item>
                       <img
                         className="d-block w-100"
-                        src={pergunta4}
+                        src={Ajuda3}
                         alt="Imagem3"
                       />
-                      <Carousel.Caption>
-                        <h3>Passo 3</h3>
-                        <p>Faça isso</p>
-                      </Carousel.Caption>
                     </Carousel.Item>
                   </Carousel>
                 </div>

@@ -1,5 +1,5 @@
 import { Container, Spinner } from "react-bootstrap";
-import livroIcon  from "../../assets/icons/livros.png"
+import livroIcon  from "../../assets/icons/LogoBibliotechSemTitulo.svg"
 
 export function Loader() {
     return (
@@ -9,7 +9,8 @@ export function Loader() {
             <img src={livroIcon} width="300" />
             <h1 className="display-3">Bibliotech</h1>
             <span>O melhor local para alugar livros</span>
-            <Spinner variant="success"></Spinner>
+            <br />
+            <Spinner variant="dark"></Spinner>
         </Container>
     )
 }
