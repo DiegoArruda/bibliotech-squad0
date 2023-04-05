@@ -4,11 +4,16 @@ import logoIcon from "../../assets/icons/livros.png";
 import googleIcon from "../../assets/icons/google-white.svg";
 import githubIcon from "../../assets/icons/github.svg";
 import { useForm } from "react-hook-form";
-import { cadastrarEmailSenha, loginGoogle, loginFacebook, loginGithub } from "../../firebase/auth";
+import {
+  cadastrarEmailSenha,
+  loginGoogle,
+  loginFacebook,
+  loginGithub,
+} from "../../firebase/auth";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
-import facebookIcon from "../../assets/icons/facebook-icon.svg"
+import facebookIcon from "../../assets/icons/facebook-icon.svg";
 import { Footer } from "../../components/Footer/Footer";
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -60,38 +65,39 @@ export function Cadastro() {
       });
   }
 
-  function onLoginFacekook(){
-    loginFacebook().then((user)=>{
-      toast.success(`Bem-vindo(a) ${user.email}`, {
-        position: "bottom-right",
-        duration: 2500,
+  function onLoginFacekook() {
+    loginFacebook()
+      .then((user) => {
+        toast.success(`Bem-vindo(a) ${user.email}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+        navigate("/");
+      })
+      .catch((erro) => {
+        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
       });
-      navigate("/");
-    })
-    .catch((erro) => {
-      toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
-        position: "bottom-right",
-        duration: 2500,
-      });
-    });
   }
 
-  function onLoginGithub(){
-    loginGithub().then((user)=>{
-      toast.success(`Bem-vindo(a) ${user.email}`, {
-        position: "bottom-right",
-        duration: 2500,
+  function onLoginGithub() {
+    loginGithub()
+      .then((user) => {
+        toast.success(`Bem-vindo(a) ${user.email}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+        navigate("/");
+      })
+      .catch((erro) => {
+        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
       });
-      navigate("/");
-    })
-    .catch((erro) => {
-      toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
-        position: "bottom-right",
-        duration: 2500,
-      });
-    });
   }
-
 
   const usuarioLogado = useContext(AuthContext);
 
@@ -101,9 +107,6 @@ export function Cadastro() {
   }
 
   return (
-
-
-
     <>
     <Container fluid className="my-5">
       <p className="text-center">
@@ -130,6 +133,10 @@ export function Cadastro() {
         <img src={logoIcon}  width="32" alt="" />
         Tente nosso Quiz
       </Button>
+      <Button className="m-3" variant="outline-success" as={Link} to="/loja">
+        <img src={logoIcon}  width="32" alt="" />
+        Visite nossa loja
+      </Button>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email</Form.Label>
@@ -147,29 +154,41 @@ export function Cadastro() {
           <Form.Label>Senha</Form.Label>
           <InputGroup>
             <Form.Control
-              type={hidePass ? "password" : "text"}
-              className={errors.senha && "is-invalid"}
-              placeholder="Sua senha"
-              {...register("senha", { required: "A senha é obrigatória" })}
+              type="email"
+              className={errors.email && "is-invalid"}
+              placeholder="Seu email"
+              {...register("email", { required: "O email é obrigatório" })}
             />
-            <InputGroup.Text>
-              <i
-                class={hidePass ? "bi bi-eye-fill" : "bi bi-eye"}
-                onClick={() => setHidePass(!hidePass)}
-              ></i>
-            </InputGroup.Text>
             <Form.Text className="invalid-feedback">
-              {errors.senha?.message}
+              {errors.email?.message}
             </Form.Text>
-          </InputGroup>
-        </Form.Group>
-        <Button type="submit" variant="success">
-          Cadastrar
-        </Button>
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="password">
+            <Form.Label>Senha</Form.Label>
+            <InputGroup>
+              <Form.Control
+                type={hidePass ? "password" : "text"}
+                className={errors.senha && "is-invalid"}
+                placeholder="Sua senha"
+                {...register("senha", { required: "A senha é obrigatória" })}
+              />
+              <InputGroup.Text>
+                <i
+                  class={hidePass ? "bi bi-eye-fill" : "bi bi-eye"}
+                  onClick={() => setHidePass(!hidePass)}
+                ></i>
+              </InputGroup.Text>
+              <Form.Text className="invalid-feedback">
+                {errors.senha?.message}
+              </Form.Text>
+            </InputGroup>
+          </Form.Group>
+          <Button type="submit" variant="success">
+            Cadastrar
+          </Button>
         </Form>
         <Footer />
       </Container>
-      
     </>
   );
 }
