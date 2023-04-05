@@ -11,32 +11,32 @@ import { db } from "../../firebase/config";
 
 export function Livros() {
   const [pesquisa, setPesquisa] = useState([]);
-  
+
   const [livros, setLivros] = useState(null);
 
   useEffect(() => {
     initializeTable();
   }, []);
 
-
-    function onPesquisa(event){
-      let valor = event.target.value
+  function onPesquisa(event) {
+    let valor = event.target.value;
     let Liv = [];
-    for(let livro of livros) {
+    for (let livro of livros) {
       let nomeLivroMinusculo = livro.titulo.toLowerCase();
       let valorMinusculo = valor.toLowerCase();
       let indice = nomeLivroMinusculo.indexOf(valorMinusculo);
-      let isbn = livro.isbn
-      let indice2 = isbn.indexOf(valor)
-      if(indice !== -1 || indice2 !== -1) {
-        Liv.push(livro)
+      let isbn = livro.isbn;
+      let indice2 = isbn.indexOf(valor);
+      if (indice !== -1 || indice2 !== -1) {
+        Liv.push(livro);
       }
-      setPesquisa(Liv)
-    }}
+      setPesquisa(Liv);
+    }
+  }
 
   function initializeTable() {
     const livrosRef = collection(db, "livros");
-    const q = query(livrosRef, where("active", "===", true));
+    const q = query(livrosRef, where("active", "==", true));
     getDocs(q).then((snapshot) => {
       let paginaAtual = [];
       snapshot.forEach((doc) => {
