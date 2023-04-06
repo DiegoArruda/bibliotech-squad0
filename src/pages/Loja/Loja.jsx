@@ -8,8 +8,9 @@ import { useContext, useEffect, useState } from "react";
 import banner1 from "../../assets/images/Loja/Bem-Vindo.jpeg"
 import banner2 from "../../assets/images/Loja/Happy.jpeg"
 import banner3 from "../../assets/images/Loja/Presente.jpeg"
-import { getLivros } from "../../firebase/livros"
 import { ModalLoja } from "./ModalLoja";
+import { db } from "../../firebase/config";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 
 
@@ -56,10 +57,22 @@ export function Loja() {
     }
 
     const [livros, setLivros] = useState(null);
-    useEffect(() => {
-        getLivros().then((busca) => {
-            setLivros(busca);
+
+    function initializeTable() {
+      const livrosRef = collection(db, "livros");
+      const q = query(livrosRef, where("active", "==", true));
+      getDocs(q).then((snapshot) => {
+        let paginaAtual = [];
+        snapshot.forEach((doc) => {
+          paginaAtual.push({ ...doc.data(), id: doc.id });
         });
+        setLivros(paginaAtual);
+      });
+    }
+
+
+    useEffect(() => {
+      initializeTable();
     }, []);
 
     return (
