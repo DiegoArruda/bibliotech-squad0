@@ -231,6 +231,20 @@
   flex-direction: column;
 }
 
+#dark .politica h1{
+  color: black;
+}
+
+#dark .politica {
+  background: rgb(5,29,17);
+  background: linear-gradient(0deg, rgba(5,29,17,1) 25%, rgba(9,80,46,1) 85%);;
+  padding: 50px;
+  display: flex;
+  height: 100%;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
 #light .quizz {
   background: rgb(9,80,46);
   background: linear-gradient(180deg, rgba(9,80,46,1) 7%, rgba(226,255,224,1) 56%, rgba(226,255,224,1) 57%);
